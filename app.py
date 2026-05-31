@@ -3,6 +3,8 @@ import csv
 
 app = Flask(__name__)
 
+
+
 @app.route('/data/taco_adaptada.csv')
 def csv_file():
     return send_file('data/taco_adaptada.csv')
@@ -59,3 +61,4 @@ def resultado():
     
 if __name__ == '__main__':
     app.run(debug=True)
+    #para atualizar depois das modificações
