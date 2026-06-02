@@ -1,53 +1,74 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{%extends 'base.html'%}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+<title>{%block title%}Página Inicial{%endblock%}</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js" defer></script>
+{%block links%}
+<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+<link rel='stylesheet' href='https://flaticon.com'>
+{%endblock%}
 
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
-
-</head>
-<body>
-    <h1>TrocaPrato</h1>
+{%block content%}
+<div class="container-conversor">
+    <h1>Conversor</h1>
     <form method="POST" action="/resultado" id="comparador" novalidate>
 
         <div class="caixa" id="div-alimento-a">
             <h2>Qual alimento você deseja substituir?</h2>
-            <select name="alimento-a" id="select-alimento-a" required></select>
-            <select id="filtro-a">
-                <option value="todas">todas as categorias</option>
-                <option value="cereais e derivados">cereais e derivados</option>
-                <option value="verduras e hortaliças">verduras e hortaliças</option>
-                <option value="frutas">frutas</option>
-                <option value="gorduras">gorduras</option>
-                <option value="pescados e frutos do mar">pescados e frutos do mar</option>
-                <option value="carnes e derivados">carnes e derivados</option>
-                <option value="leite e derivados">leite e derivados</option>
-                <option value="bebidas">bebidas</option>
-                <option value="ovos e derivados">ovos e derivados</option>
-                <option value="alimentos doces">alimentos doces</option>
-                <option value="outros alimentos">outros alimentos</option>
-                <option value="leguminosas">leguminosas</option>
-                <option value="nozes e sementes">nozes e sementes</option>
-            </select>
-            <p class="escondido" id="msg-erro-1">Informe um alimento.</p>
+            <div class="dados-caixa">
+
+                <div class="selects-container">
+                    <select name="alimento-a" id="select-alimento-a" class="select-alim-a" required></select>
+                    <select id="filtro-a">
+                        <option value="todas">todas as categorias</option>
+                        <option value="cereais e derivados">cereais e derivados</option>
+                        <option value="verduras e hortaliças">verduras e hortaliças</option>
+                        <option value="frutas">frutas</option>
+                        <option value="gorduras">gorduras</option>
+                        <option value="pescados e frutos do mar">pescados e frutos do mar</option>
+                        <option value="carnes e derivados">carnes e derivados</option>
+                        <option value="leite e derivados">leite e derivados</option>
+                        <option value="bebidas">bebidas</option>
+                        <option value="ovos e derivados">ovos e derivados</option>
+                        <option value="alimentos doces">alimentos doces</option>
+                        <option value="outros alimentos">outros alimentos</option>
+                        <option value="leguminosas">leguminosas</option>
+                        <option value="nozes e sementes">nozes e sementes</option>
+                    </select>
+                    <p class="escondido" id="msg-erro-1">Informe um alimento.</p>
+                </div>
+
+
+                <div class="botao-seguir">
+                    <button id="btn-prox-1" class="proximo">
+                        <!-- isso é o icone de seta em svg -->
+                        <svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#edece9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button> 
+                </div>
+
         </div>
 
-        <span id="btn-prox-1" class="proximo">-></span>
+    </div>
+
+
+        
 
         <div class="caixa escondido" id="div-peso">
             <h2>Quantas gramas desse alimento você deveria consumir?</h2>
-            <input type="number" name="peso_a" id="peso-a" min="1" max="999" required>
-            <p class="escondido" id="msg-erro-2">Informe o peso.</p>
-        </div>
+            <div class="dados-caixa-peso"> 
+                <div class="input-peso-conteiner">
+                    <input type="number" name="peso_a" id="peso-a" min="1" max="999" required>
+                    <p class="escondido" id="msg-erro-2">Informe o peso.</p>
+                </div>
+                
 
-        <span id="btn-prox-2" class="proximo escondido">-></span>
+                <div class="botao-escondido">
+                    <button id="btn-prox-2" class="proximo escondido"><svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#edece9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+                </div>
+            </div>
+           
+        </div>
+        
+        
 
         <div class="caixa escondido" id="div-alimento-b">
             <span class="teste">Você deseja substituir </span><span class="teste" id="label-alimento"></span><span class="teste"> por qual alimento?</span>
@@ -73,5 +94,15 @@
         
         <button id="btn-submit" type="submit" class="escondido">-></button>
     </form>
-</body>
+    </div>
+
+    {%block script%}
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js" defer></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    {%endblock%}
+{%endblock%}
+
+
+
 </html>

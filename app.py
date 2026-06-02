@@ -59,6 +59,18 @@ def resultado():
 
     return render_template('resultado.html', alimento_a=dic_alimento_a, alimento_b=dic_alimento_b)
     
+@app.route("/favoritos")
+def favoritos():
+    return render_template('favoritos.html')
+
+@app.route("/tabela")
+def tabela():
+    return render_template('tabela.html')
+
+@app.route("/perfil")
+def perfil():
+    return render_template('perfil.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
     #para atualizar depois das modificações

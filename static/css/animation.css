@@ -1,0 +1,12 @@
+/* esse página irá guardar as animações do site */
+
+@keyframes fade-e-girar{
+  0% {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}

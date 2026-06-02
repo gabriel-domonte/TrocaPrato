@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock %}</title>
+    {%block links%}{%endblock%}
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css')}}"> <!-- para animações -->
+</head>
+<body>
+    <!-- Cabeçalho e navbar para todo o site -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="{{url_for('static', filename='/img/logo.png')}}" alt="logo" width="280" height="200">
+        </div>
+
+        <ul>
+            <li><a href=" {{url_for('index') }}">Conversor</a></li>
+            <li>|</li>
+            <li><a href="{{ url_for('favoritos') }}">Favoritos</a></li>
+            <li>|</li>
+            <li><a href="{{ url_for('tabela')}}">Tabela</a></li>
+            <li>|</li>
+            <li><a href="{{ url_for('perfil')}}">Perfil</a></li>
+        </ul>
+
+        
+    </header>
+
+    <!-- Conteúdo das páginas -->
+    <main >
+        {% block content %}{% endblock %}
+    </main>
+
+    
+    
+    <footer class="rodape-base">
+
+        <div class="footer-container">
+            <h2>Este site foi desenvolvido<br> como projeto de avaliação.</h2>
+            <div class="dados-footer">
+                <h3>Integrantes</h3>
+                <p>Ana Laura E.</p>
+                <p>Anna Júlia F.</p>
+                <p>Danielle M.</p>
+                <p>Gabriel do Monte</p>
+            </div>
+        </div>
+
+
+
+    </footer>
+
+    {% block scripts %}{% endblock %}
+
+</body>
+
+
+</html>

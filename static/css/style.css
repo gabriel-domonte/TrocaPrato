@@ -1,25 +1,83 @@
-@import url('https://googleapis.com');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
+/* Importanto fonts */
 
-html{
+@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Climate+Crisis:YEAR@2010&family=Erica+One&family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+/* GERAIS */
+
+html, body{
+    height: 100%;
     background-color: #fff5ea;
+    margin: 0;
+    display: flex; flex-direction: column; 
 }
 
 *{
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
+
+main{
+    flex: 1;
+}
+
+
+/* NAVBAR */
+
+
+.navbar{
+    width: 100%;
+    height: 80px;
+    background: #0a6f47;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+    margin-top: 25px;
+}
+
+.navbar ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar a:hover{
+    color: #69d983;
+}
+
+
+
+/* ESTILO CONVERSOR */
 
 .escondido{
     display: none;
     }
 
-h1{
+.container-conversor h1{
     text-align: center;
-    font-family: Oswald,sans-serif;
-    font-weight:900;
-    font-size: 50px;
-    color: #065446;
-    text-shadow: 0.5px 0.5px 0.5px rgb(113, 113, 113);
+    font-size: 30px;
+    font-family:'Plus Jakarta Sans' , sans-serif;
+    font-weight: 900;
+    color: #053d27;
+    padding: 20px;
 }
 
 form {
@@ -28,41 +86,138 @@ form {
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
-    gap: 5px;
-        }
+    gap: 10px;
+    
+}
 
 .caixa{
-    background-color: #34D058;
+	/* animation: fade-e-girar 0.3s  ease-out; */
+    /* animation: aparecer 0.2s ease; */
+    background-color: #f7d05c;
     border-radius: 20px;
     padding: 20px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+    
+
 }
+.caixa h2{
+    color: #053d27;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 1.3em;
+}
+
+.dados-caixa{
+    display: flex;
+    gap: 20px;
+    
+   
+}
+
+.selects-container{
+    display: flex; flex-direction: column;
+    margin-left: 10px; 
+}
+
+.ts-control{  /* esse é o select de pesquisa*/
+    border-radius: 5px;
+    max-height: 60px;
+
+    width: 500px;
+    
+}
+
+.caixa select{ /*esse é o dropdown*/
+    background-color: #fefff7;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 0px;
+    width: 70%;    
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+    padding: 8px;
+    max-height: 40px;
+    width: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.caixa:hover{
+    transform:scale(1.01);transition: 0.3s;
+}
+
+
+
 
 .proximo{
     cursor: pointer;
     user-select: none;
-    border-radius: 100%;
-    background-color: gray;
-    padding: 5px;
-    max-width: 50px;
-    margin-left: auto;
+    border-radius: 10%;
+    background-color: #1f4221;
+    border-radius: 50%;
+    margin-top: 15px;
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    box-shadow: 0px 5px 20px rgba(70, 33, 33, 0.08);
+    margin-left: 0;
 }
 
-        button {
-            cursor: pointer;
-            border-radius: 100%;
-            max-width: 100px;
-            margin-left: auto;
-            background-color: grey;
-            border: none;
-            padding: 5px;
+.proximo:hover{
+    background-color: #46783e ;
+    transform:scale(1.01);
+    transition: 0.3s;
+
+}
+
+.dados-caixa-peso{
+    display: flex; gap: 20px;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 100%;
+    max-width: 100px;
+    margin-left: auto;
+    background-color: grey;
+    padding: 5px;
+}
+
+.teste {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#label-alimento {
+    color: rgb(109, 47, 255);
+    text-transform: lowercase;
         }
 
-        .teste {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
 
-        #label-alimento {
-            color: rgb(109, 47, 255);
-            text-transform: lowercase;
-        }
+.footer-container{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    gap: 2px;
+    color:white;
+    background-color:#0a6f47;
+}
+
+.footer-container h2{
+    color: white;
+
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    
+}
