@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, send_file
 import csv
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -65,6 +66,16 @@ def favoritos():
 
 @app.route("/tabela")
 def tabela():
+    df = pd.read_csv("dados.csv")
+    
+    colunas = df.columns.tolist()
+    dados = df.values.tolist()
+    
+    return render_template(
+        "tabela.html",
+        colunas =colunas,
+        dados= dados
+    )
     return render_template('tabela.html')
 
 @app.route("/perfil")
