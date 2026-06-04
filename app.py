@@ -65,17 +65,21 @@ def favoritos():
 
 @app.route("/tabela")
 def tabela():
-    df = pd.read_csv("dados.csv")
-    
-    colunas = df.columns.tolist()
-    dados = df.values.tolist()
+    with open('data/taco_adaptada.csv', encoding='utf-8') as tabela:
+        leitor = csv.reader(tabela) 
+        linhas = list(leitor)
+        
+    colunas = linhas[0][1:]
+    dados = []
+    for linha in linhas [1:]:
+        dados.append(linha[1:])
     
     return render_template(
-        "tabela.html",
-        colunas =colunas,
-        dados= dados
+        'tabela.html',
+        colunas = colunas,
+        dados = dados
     )
-    return render_template('tabela.html')
+    
 
 @app.route("/perfil")
 def perfil():

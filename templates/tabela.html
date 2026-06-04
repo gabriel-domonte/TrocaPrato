@@ -1,6 +1,33 @@
-{%extends 'base.html'%}
+{%extends 'base.html'%} {%block title%}Tabela{%endblock%} {% block content%}
+{%block links%}
+<link rel="stylesheet" href="style.css">
+{%endblock%}
+<html>
+  <head></head>
+  <body>
+  <h1 id="titulo-tabela">Tabela de alimentos</h1>
+  <div class="container-tabela">
+    <table class="tabela-alimentos">
+      <!--cabeçalho-->
+      
+      <tr>
+        {% for coluna in colunas %}
+           <th>{{ coluna}}</th>
+        {% endfor %}
+      </tr>
+      
+      <!--dados-->
 
-{%block title%}Tabela{%endblock%}
+      {% for linha in dados %}
+        <tr>
+           {% for valor in linha %}
+               <td>{{valor}}</td>
+           {% endfor %}
+        </tr>
+      {% endfor %}
 
-{%block content%}
-<p>página para implementar a tabela</p>{%endblock%}
+    </table>
+  </div>
+  </body>
+</html>
+{%endblock%}

@@ -221,3 +221,50 @@ button {
     font-weight: 400;
     
 }
+
+#titulo-tabela{
+    color: #14381C;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family:'Plus Jakarta Sans' , sans-serif;
+}
+.container-tabela{
+    background-color: #FBCC56;
+    width: 90%;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.tabela-alimentos{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-alimentos th{
+    background-color: #0a6f47;
+    color: white;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+.tabela-alimentos td{
+    color: #14381C;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+.tabela-alimentos th:nth-child(3),td:nth-child(3){
+    width: 180px;
+    max-width: 180px;
+}
+.tabela-alimentos tr:hover td{
+    background-color: #e9bd39;
+}
