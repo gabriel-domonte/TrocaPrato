@@ -30,9 +30,19 @@
 
     <!-- Conteúdo das páginas -->
     <main>
-        {% block content %}
-        
-        {% endblock %}
+
+        <div class="mensagens-flash">{% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alerta-flash">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        {% block content %}{% endblock %}
     </main>
 
     <footer class="rodape-base">

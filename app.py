@@ -117,11 +117,11 @@ def exibir_favoritos():
                             'nome_b': linha_b['descricao'],
                             'peso_b': round(calorias_a * 100 / float(linha_b['kcal']))
                         })
-
-
-
+                        
     return render_template('favoritos.html', favoritos=favoritos)
 
+
+   
 @app.route("/tabela")
 def tabela():
     with open('data/taco_adaptada.csv', encoding='utf-8') as tabela:

@@ -3,5 +3,92 @@
 {%block title%}Favoritos{%endblock%}
 
 {% block content %}
-<p>aqui irá a página de favoritos</p>
+<body>
+
+    <!--Título-->
+   <section class="titulo-favoritos">
+    <h1>Lista de favoritos</h1>
+    <p>Veja e genrecie seus alimentos favoritados.</p>
+   </section>
+
+   <!--Conteúdo-->
+   <main class="container-de-favoritos">
+    <section class="favoritados">
+        <h2>⭐ Meus favoritos</h2>
+
+        {% for par in favoritos %}
+            <div class="card-favorito">
+
+        <div class="info-fav">
+            <div class="icone-fav1">⭐Itens</div>
+
+            <div>
+                <div class="nome-favorito">
+                    {{ par.nome }}
+                    {% if par.tags %}
+                        {{ par.tags }}
+                    {% endif %}
+                </div>
+
+                <div class="categoria-favorito">
+                    {{ par.nome_b }}
+                </div>
+            </div>
+        </div>
+
+        <div class="calorias">
+            {{ par.peso_a if par.peso_a else par.peso }}g
+            ➜
+            {{ par.peso_b }}g
+        </div>
+    </div>
+
+    <div class="comparacao-nutrientes">
+
+        <div class="caixa-mini">
+            <h4>{{ par.nome }}</h4>
+
+            <p><strong>Calorias:</strong> {{ par.calorias }} kcal</p>
+
+            <p><strong>Carboidratos:</strong>
+                {{ par.carboidratos }}g
+            </p>
+
+            <p><strong>Proteínas:</strong>
+                {{ par.proteinas }}g
+            </p>
+
+            <p><strong>Lipídios:</strong>
+                {{ par.lipideos }}g
+            </p>
+        </div>
+
+        <div class="seta-equivalencia">
+            ➜ equivale a ➜
+        </div>
+
+        <div class="caixa-mini-favorito">
+            <h4>{{ par.nome_b }}</h4>
+
+            <p><strong>Peso:</strong>
+                {{ par.peso_b }}g
+            </p>
+
+            <p><strong>Calorias:</strong>
+                {{ par.calorias }} kcal
+            </p>
+        </div>
+
+    </div>
+
+    {% else %}
+
+    <div class="sem-favoritos">
+        Você ainda não salvou nenhuma comparação.
+    </div>
+
+    {% endfor %}
+    </section>
+   </main>
+</body>
 {%endblock%}

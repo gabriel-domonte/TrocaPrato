@@ -162,4 +162,3 @@ bntProx1.addEventListener('click', comparadorStep1);
 bntProx2.addEventListener('click', comparadorStep2);
 
 form.addEventListener('submit', comparadorStep3);
-
