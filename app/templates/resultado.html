@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        h2{
+            text-align: center;
+        }
+
+        #resultado{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .caixa{
+            background-color: gray;
+            padding: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h2>Aqui está o resultado da substituição:</h2>
+    <div id="resultado">
+            <div class="caixa">
+                <h3>{{dict_alimento_a.nome}}</h3>
+
+                {% if dict_alimento_a.tags %}
+                <p>({{dict_alimento_a.tags}})</p>
+                {% endif %}
+
+                <p>Peso: {{dict_alimento_a.peso}}</p>
+                <p>Calorias: {{dict_alimento_a.cal}}</p>
+                <p>Carboidratos: {{dict_alimento_a.carb}}</p>
+                <p>Proteínas: {{dict_alimento_a.prot}}</p>
+                <p>Lipídios: {{dict_alimento_a.lip}}</p>
+                <p>Fibras: {{dict_alimento_a.fib}}</p>
+            </div>
+
+            <div class="caixa">
+                <h3>{{dict_alimento_b.nome}}</h3>
+
+                {% if dict_alimento_b.tags %}
+                <p>({{dict_alimento_b.tags}})</p>
+                {% endif %}
+
+                <p>Peso: {{dict_alimento_b.peso}}</p>
+                <p>Calorias: {{dict_alimento_b.cal}}</p>
+                <p>Carboidratos: {{dict_alimento_b.carb}}</p>
+                <p>Proteínas: {{dict_alimento_b.prot}}</p>
+                <p>Lipídios: {{dict_alimento_b.lip}}</p>
+                <p>Fibras: {{dict_alimento_b.fib}}</p>
+            </div>         
+    </div>
+</body>
+</html>
