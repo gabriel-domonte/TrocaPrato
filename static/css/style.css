@@ -669,7 +669,7 @@ form::before {
 
 .botao-favoritos {
     display: inline-block;
-    background-color: var(--verde-texto);
+    background-color: var(--amarelo-card);
     color: var(--branco);
     padding: 12px 30px;
     border: none;
@@ -678,13 +678,12 @@ form::before {
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(5, 61, 39, 0.25);
     cursor: pointer;
-    margin-top: 20px;
+    transition: 0.4s;
 }
 
 .botao-favoritos:hover {
-    background-color: var(--verde-principal);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(5, 61, 39, 0.35);
+    background-color: #8a540f;
+    box-shadow: 0 6px 20px rgba(197, 162, 10, 0.35);
 }
 .titulo-favoritos {
     text-align: center;
