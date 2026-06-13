@@ -1,8 +1,6 @@
 export function limitarPesoA(pesoAlimentoA) {
     /* Impede que o usuário digite mais que 3 algarismos no campo 'peso do alimento'. */
-    if (pesoAlimentoA.value.length > 3){
         pesoAlimentoA.value = pesoAlimentoA.value.slice(0,3);
-    }
 }
 
 
