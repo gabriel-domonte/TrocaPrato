@@ -2,7 +2,7 @@ export async function carregarAlimentos() {
     /* Transforma cada linha do .csv em um objeto, retorna uma lista de objetos */
     let optionsOriginal = [];
 
-    const resposta = await fetch('app/data/taco_adaptada.csv');
+    const resposta = await fetch('/app/data/taco_adaptada.csv');
     const tabela = await resposta.text();
     const linhas = tabela.trim().split('\n');
 

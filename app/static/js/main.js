@@ -33,16 +33,17 @@ let tomSelectInstanceB;
 async function iniciarlizar() {
     /* Aguarda a função carregarAlimentos() preencher o array OptionsOriginal para então criar as duas instâncias do Tom Select e habilitar o filtro por categorias */
     const optionsOriginal = await carregarAlimentos();
+    const optionsOriginalB = structuredClone(optionsOriginal);
 
     tomSelectInstanceA = initTomSelect(selectAlimentoA, optionsOriginal);
-    tomSelectInstanceB = initTomSelect(selectAlimentoB, optionsOriginal);
+    tomSelectInstanceB = initTomSelect(selectAlimentoB, optionsOriginalB);
 
     filtroCategoriasA.addEventListener('change', () => {
         filtrar(tomSelectInstanceA, optionsOriginal, filtroCategoriasA);
     });
 
     filtroCategoriasB.addEventListener('change', () => {
-        filtrar(tomSelectInstanceB, optionsOriginal, filtroCategoriasB);
+        filtrar(tomSelectInstanceB, optionsOriginalB, filtroCategoriasB);
     });
 }
 

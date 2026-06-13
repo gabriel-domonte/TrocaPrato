@@ -5,8 +5,9 @@ export function limitarPesoA(pesoAlimentoA) {
     }
 }
 
+
 export function formStep1(selectAlimentoA, msgErro1, divPeso, bntProx1, bntProx2) {
-    /* Caso o usuário tenha preenchido a primeira parte do formulário corretamente, exibe a segunda parte. Caso contrário, exibe uma mensagem de erro. */
+    /* Caso o usuário tenha preenchido o formulário corretamente, exibe a próxima etapa do formulário*/
     if (!selectAlimentoA.checkValidity()) {
         msgErro1.classList.remove('escondido');
     } else {
@@ -18,7 +19,7 @@ export function formStep1(selectAlimentoA, msgErro1, divPeso, bntProx1, bntProx2
 }
 
 export function formStep2(msgErro1, msgErro2, selectAlimentoA, pesoAlimentoA, divAlimentoB, btnSubmit, bntProx2) {
-    /* Caso o usuário tenha preenchido a primeira e segunda parte do formulário corretamente, exibe a terceira parte. Caso contrário, exibe uma mensagem de erro. */
+    /* Caso o usuário tenha preenchido o formulário corretamente, exibe a próxima etapa do formulário*/
     msgErro1.classList.add('escondido')
     msgErro2.classList.add('escondido')
 
@@ -38,7 +39,7 @@ export function formStep2(msgErro1, msgErro2, selectAlimentoA, pesoAlimentoA, di
 }
 
 export function formStep3 (event, msgErro1, msgErro2, msgErro3, selectAlimentoA, pesoAlimentoA, selectAlimentoB, form) {
-    /* Caso o usuário tenha preenchido o formulário corretamente, envia o formulário. Caso contrário, exibe mensagem de erro. */
+    /* Caso o usuário tenha preenchido o formulário corretamente, envia o formulário*/
     event.preventDefault();
 
     msgErro1.classList.add('escondido');
