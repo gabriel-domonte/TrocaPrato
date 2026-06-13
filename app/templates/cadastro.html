@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/cadastro">
+        <input type="text" id="usuario" name="usuario" placeholder="nome de usuário" value="{{ request.form.get('usuario', '') }}">
+        {% if erros.usuario %}
+            <p class="erro">{{erros.usuario}}</p>
+        {% endif %}
+        <input type="password" id="senha" name="senha" placeholder="senha">
+        {% if erros.senha1 %}
+            <p class="erro">{{erros.senha1}}</p>
+        {% endif %}
+        <input type="password" id="senha2" name="senha2" placeholder="confirme sua senha">
+        {% if erros.senha2 %}
+            <p class="erro">{{erros.senha2}}</p>
+        {% endif %}
+        <p>Sua senha precisa conter pelo menos</p>
+        <ul>
+            <li>Uma letra maiúscula</li>
+            <li>Uma letra minúscula</li>
+            <li>Um número</li>
+            <li>Seis caracteres</li>
+            <li>Não pode conter caracteres especiais</li>
+        </ul>
+        <button type="submit">Cadastre-se</button>
+        <p>Já tem uma conta? </p><a href="/login">Fazer Login.</a>
+    </form>
+</body>
+</html>

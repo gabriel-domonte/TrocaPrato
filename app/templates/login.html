@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/login">
+        {% if erros.geral %}
+            <p class="erro">{{erros.geral}}</p>
+        {% endif %}
+        <input type="text" id="usuario" name="usuario" placeholder="nome de usuário" value="{{ request.form.get('usuario', '') }}">
+        {% if erros.usuario %}
+            <p class="erro">{{erros.usuario}}</p>
+        {% endif %}
+        <input type="password" id="senha" name="senha" placeholder="senha">
+        {% if erros.senha %}
+            <p class="erro">{{erros.senha}}</p>
+        {% endif %}
+        <button type="submit">Fazer login</button>
+        <p>Não tem uma conta? </p><a href="/cadastro">Cadastre-se.</a>
+    </form>
+</body>
+</html>
