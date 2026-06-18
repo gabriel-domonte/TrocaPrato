@@ -1,0 +1,193 @@
+/* versão responsive para login e cadastro */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Climate+Crisis:YEAR@2010&family=Erica+One&family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --verde-principal: #0a6f47;
+    --verde-texto: #053d27;
+    --verde-hover: #0c8153;
+    --fundo: #fcf9f2;
+    --branco: #ffffff;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2e8b57, #165118);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* evita barra de rolagem horizontal */
+    overflow-y: auto;   /* permite rolar a tela verticalmente no celular */
+    padding: 2rem 0;    /* espaco seguro no topo/base para telas pequenas */
+}
+
+.auth-container {
+    z-index: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px; /* se adapta a celulares e nao passa de 420px no pc */
+    background: white;
+    padding: 2rem 1.5rem; /* padding reduzido para aproveitar espaco no celular */
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-card h1 {
+    text-align: center;
+    font-weight: 500;
+    color: var(--verde-principal);
+    font-size: 1.8rem;
+}
+
+.auth-card h1 a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--verde-principal);
+}
+
+.auth-card p {
+    text-align: center;
+    color: #7c7c7c;
+    font-size: 0.95rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label {
+    color: var(--verde-texto);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.campo input {
+    height: 48px;
+    width: 100%;
+    border: 2px solid #e4e4e4;
+    border-radius: 12px;
+    padding: 0 15px;
+    outline: none;
+    transition: .3s;
+    font-size: 0.95rem;
+}
+
+.campo input:focus {
+    border-color: var(--verde-principal);
+}
+
+button {
+    margin-top: 10px;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    background: var(--verde-principal);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    background: var(--verde-hover);
+    transform: translateY(-2px);
+}
+
+span {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+span a {
+    color: var(--verde-principal);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+span a:hover {
+    text-decoration: underline;
+}
+
+.bg-decoracao {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    z-index: 1;
+    opacity: .3;
+    pointer-events: none; /* impede que a imagem intercepte cliques por engano */
+}
+
+.bg-decoracao img {
+    width: 100%;
+}
+
+#msg-erro {
+    color: #bf0000;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.requisitos-senha {
+    padding: 10px 5px;
+    color: #053d27;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.requisitos-senha p {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.requisitos-senha ul {
+    list-style-position: inside; /* mantem as bolinhas alinhadas dentro do card */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* desktop */
+
+@media (min-width: 768px) {
+    body {
+        padding: 0; /* remove o padding extra quando cabe tudo no monitor */
+    }
+
+    .auth-card {
+        padding: 40px; /* volta ao espaçamento original maior no computador */
+    }
+}

@@ -1,62 +1,113 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{%extends 'base.html'%}
 
-    <style>
+{%block content%}
+<div class="resultado-container">
+    
+    <div class="resultado-cabecalho">
+        <span class="texto-sucesso animar-pop">✨ Troca Inteligente</span>
+        <h2 class="entrada-fade delay-1">Aqui está o resultado da substituição:</h2>
+    </div> <div class="resumo-res entrada-fade delay-3">
+        <p>✅ Para substituir <span class="dest-peso-resu">{{dict_alimento_a.peso}}g</span> de <span class="dest-nome-resu">{{dict_alimento_a.nome}}</span></p>
+        <p>Você pode consumir aproximadamente</p>
+        <p><span class="dest-peso2-resu">{{dict_alimento_b.peso}}g</span> de <span class="dest-nome2-resu">{{dict_alimento_b.nome}}</span><br> mantendo as <span class="dest-resu">{{dict_alimento_a.cal}} Kcal.</span></p>
+    </div>
 
-        h2{
-            text-align: center;
-        }
+    <div class="dif-nutri-container entrada-fade delay-4">
+        <div class="tit-dif-nutri">
+            <h3>Diferença Nutricional</h3>
+            <p>Ao trocar <strong>{{dict_alimento_a.nome}}</strong> por <strong>{{dict_alimento_b.nome}}</strong>, você consumirá:</p>
+        </div>
 
-        #resultado{
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .caixa{
-            background-color: gray;
-            padding: 20px;
-        }
-
-    </style>
-
-</head>
-<body>
-    <h2>Aqui está o resultado da substituição:</h2>
-    <div id="resultado">
-            <div class="caixa">
+        <div class="resultado-grid entrada-fade delay-5">
+            <div class="caixa-res-ali caixa-ali1">
                 <h3>{{dict_alimento_a.nome}}</h3>
-
-                {% if dict_alimento_a.tags %}
-                <p>({{dict_alimento_a.tags}})</p>
-                {% endif %}
-
-                <p>Peso: {{dict_alimento_a.peso}}</p>
-                <p>Calorias: {{dict_alimento_a.cal}}</p>
-                <p>Carboidratos: {{dict_alimento_a.carb}}</p>
-                <p>Proteínas: {{dict_alimento_a.prot}}</p>
-                <p>Lipídios: {{dict_alimento_a.lip}}</p>
-                <p>Fibras: {{dict_alimento_a.fib}}</p>
+                <div class="info-linha"><span class="label">Peso:</span> <span class="valor">{{dict_alimento_a.peso}}g</span></div>
+                <div class="info-linha"><span class="label">Calorias:</span> <span class="valor">{{dict_alimento_a.cal}} kcal</span></div>
+                <div class="info-linha"><span class="label">Carboidratos:</span> <span class="valor">{{dict_alimento_a.carb}}g</span></div>
+                <div class="info-linha"><span class="label">Proteínas:</span> <span class="valor">{{dict_alimento_a.prot}}g</span></div>
+                <div class="info-linha"><span class="label">Lipídios:</span> <span class="valor">{{dict_alimento_a.lip}}g</span></div>
+                <div class="info-linha"><span class="label">Fibras:</span> <span class="valor">{{dict_alimento_a.fib}}g</span></div>
             </div>
 
-            <div class="caixa">
+            <div class="dif-nutri-painel">
+                
+                <div class="item-barra">
+                    {% if dict_alimento_a.carb > dict_alimento_b.carb %}
+                        <div class="texto-barra negativo">- {{(dict_alimento_b.carb - dict_alimento_a.carb)|abs}}g de carboidratos</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-vermelha" style="width: 45%;"></div></div>
+                    {% elif dict_alimento_a.carb == dict_alimento_b.carb %}
+                        <div class="texto-barra neutro">Quantidade igual de carboidratos! (0g de diferença)</div>
+                    {% else %}
+                        <div class="texto-barra positivo">+ {{dict_alimento_b.carb - dict_alimento_a.carb}}g de carboidratos</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-verde" style="width: 75%;"></div></div>
+                    {% endif %}
+                </div>
+
+                <div class="item-barra">
+                    {% if dict_alimento_a.prot > dict_alimento_b.prot %}
+                        <div class="texto-barra negativo">- {{(dict_alimento_b.prot - dict_alimento_a.prot)|abs}}g de proteínas</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-vermelha" style="width: 30%;"></div></div>
+                    {% elif dict_alimento_a.prot == dict_alimento_b.prot %}
+                        <div class="texto-barra neutro">Quantidade igual de proteínas! (0g de diferença)</div>
+                    {% else %}
+                        <div class="texto-barra positivo">+ {{dict_alimento_b.prot - dict_alimento_a.prot}}g de proteínas</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-verde" style="width: 60%;"></div></div>
+                    {% endif %}
+                </div>
+
+                <div class="item-barra">
+                    {% if dict_alimento_a.lip > dict_alimento_b.lip %}
+                        <div class="texto-barra negativo">- {{ (dict_alimento_b.lip - dict_alimento_a.lip)|abs }}g de lipídeos</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-vermelha" style="width: 40%;"></div></div>
+                    {% elif dict_alimento_a.lip == dict_alimento_b.lip %}
+                        <div class="texto-barra neutro">Quantidade igual de lipídeos! (0g de diferença)</div>
+                    {% else %}
+                        <div class="texto-barra positivo">+ {{ (dict_alimento_b.lip - dict_alimento_a.lip)|abs }}g de lipídeos</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-verde" style="width: 85%;"></div></div>
+                    {% endif %}
+                </div>
+
+                <div class="item-barra">
+                    {% if dict_alimento_a.fib > dict_alimento_b.fib %}
+                        <div class="texto-barra negativo">- {{ (dict_alimento_b.fib - dict_alimento_a.fib)|abs }}g de fibras</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-vermelha" style="width: 25%;"></div></div>
+                    {% elif dict_alimento_a.fib == dict_alimento_b.fib %}
+                        <div class="texto-barra neutro">Quantidade igual de fibras! (0g de diferença)</div>
+                    {% else %}
+                        <div class="texto-barra positivo">+ {{ (dict_alimento_b.fib - dict_alimento_a.fib)|abs }}g de fibras</div>
+                        <div class="barra-bg"><div class="barra-progresso barra-verde" style="width: 50%;"></div></div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div class="caixa-res-ali caixa-ali2">
                 <h3>{{dict_alimento_b.nome}}</h3>
-
-                {% if dict_alimento_b.tags %}
-                <p>({{dict_alimento_b.tags}})</p>
-                {% endif %}
-
-                <p>Peso: {{dict_alimento_b.peso}}</p>
-                <p>Calorias: {{dict_alimento_b.cal}}</p>
-                <p>Carboidratos: {{dict_alimento_b.carb}}</p>
-                <p>Proteínas: {{dict_alimento_b.prot}}</p>
-                <p>Lipídios: {{dict_alimento_b.lip}}</p>
-                <p>Fibras: {{dict_alimento_b.fib}}</p>
-            </div>         
+                <div class="info-linha"><span class="label">Peso:</span> <span class="valor">{{dict_alimento_b.peso}}g</span></div>
+                <div class="info-linha"><span class="label">Calorias:</span> <span class="valor">{{dict_alimento_b.cal}} kcal</span></div>
+                <div class="info-linha"><span class="label">Carboidratos:</span> <span class="valor">{{dict_alimento_b.carb}}g</span></div>
+                <div class="info-linha"><span class="label">Proteínas:</span> <span class="valor">{{dict_alimento_b.prot}}g</span></div>
+                <div class="info-linha"><span class="label">Lipídios:</span> <span class="valor">{{dict_alimento_b.lip}}g</span></div>
+                <div class="info-linha"><span class="label">Fibras:</span> <span class="valor">{{dict_alimento_b.fib}}g</span></div>
+            </div>        
+        </div>
     </div>
-</body>
+
+    <div class="btn-container ">
+        <a href="{{ url_for('index') }}" class="btn-voltar entrada-fade delay-7">Fazer nova comparação</a> 
+        <div class="formulario-favoritos">
+            <form action="/salvar_favorito" method="post">
+                <input type="hidden" name="alimento-a" value="{{ request.form['alimento-a'] }}">
+                <input type="hidden" name="alimento-b" value="{{ request.form['alimento-b'] }}">
+                <input type="hidden" name="peso_a" value="{{ dict_alimento_a.peso }}">
+                <div class="btn-favoritos">
+                    <button type="submit" class="botao-favoritos entrada-fade delay-7">Salvar como Favoritos</button>
+          </div>
+        </form>
+    </div>
+    </div>       
+</div>
+
+   
+{%endblock%}
 </html>

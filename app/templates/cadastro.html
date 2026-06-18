@@ -1,34 +1,94 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro - TrocaPrato</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-authen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/anima-trans.css') }}"> -->
 </head>
 <body>
-    <form method="POST" action="/cadastro">
-        <input type="text" id="usuario" name="usuario" placeholder="nome de usuário" value="{{ request.form.get('usuario', '') }}">
-        {% if erros.usuario %}
-            <p class="erro">{{erros.usuario}}</p>
-        {% endif %}
-        <input type="password" id="senha" name="senha" placeholder="senha">
-        {% if erros.senha1 %}
-            <p class="erro">{{erros.senha1}}</p>
-        {% endif %}
-        <input type="password" id="senha2" name="senha2" placeholder="confirme sua senha">
-        {% if erros.senha2 %}
-            <p class="erro">{{erros.senha2}}</p>
-        {% endif %}
-        <p>Sua senha precisa conter pelo menos</p>
-        <ul>
-            <li>Uma letra maiúscula</li>
-            <li>Uma letra minúscula</li>
-            <li>Um número</li>
-            <li>Seis caracteres</li>
-            <li>Não pode conter caracteres especiais</li>
-        </ul>
-        <button type="submit">Cadastre-se</button>
-        <p>Já tem uma conta? </p><a href="/login">Fazer Login.</a>
-    </form>
+
+<section class="auth-container">
+
+    <div class="auth-card">
+
+        <h1><a href="/" class="entrada-fade">Troca Prato</a></h1>
+        <p>Crie sua conta</p>
+
+        <form method="POST" action="/cadastro"  >
+
+            <div class="campo">
+                <label for="usuario">Nome de usuário</label>
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Digite seu nome de usuário"
+                    value="{{ request.form.get('usuario', '') }}"
+                >
+
+                {% if erros.usuario %}
+                    <p class="erro animar-erro" id="msg-erro">{{ erros.usuario }}</p>
+                {% endif %}
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Crie uma senha"
+                >
+
+                {% if erros.senha1 %}
+                    <p class="erro animar-erro" id="msg-erro">{{ erros.senha1 }}</p>
+                {% endif %}
+            </div>
+
+            <div class="campo">
+                <label for="senha2">Confirmar senha</label>
+                <input
+                    type="password"
+                    id="senha2"
+                    name="senha2"
+                    placeholder="Repita sua senha"
+                >
+
+                {% if erros.senha2 %}
+                    <p class="erro animar-erro" id="msg-erro">{{ erros.senha2 }}</p>
+                {% endif %}
+            </div>
+
+            <div class="requisitos-senha">
+                <p>Sua senha precisa conter pelo menos:</p>
+                <ul>
+                    <li>Uma letra maiúscula</li>
+                    <li>Uma letra minúscula</li>
+                    <li>Um número</li>
+                    <li>Seis caracteres</li>
+                    <li>Não pode conter caracteres especiais</li>
+                </ul>
+            </div>
+
+            <button type="submit">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <span>
+            Já possui conta?
+            <a href="/login">Entrar</a>
+        </span>
+
+    </div>
+
+</section>
+
 </body>
 </html>

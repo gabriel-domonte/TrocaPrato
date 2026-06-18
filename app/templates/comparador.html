@@ -1,135 +1,148 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% extends 'base.html' %}
 
-    <!-- fiz esse style sebozão só pra faciliar a visualização dos elementos
-    enquanto codava, lembrem de apagar :) -->
+{% block title %}Página Inicial{% endblock %}
 
-     <style>
+{% block links %}
+<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+{% endblock %}
 
-        .escondido{
-            display: none;
-        }
-
-        h1{
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
-            gap: 5px;
-        }
-
-        .caixa{
-            background-color: gray;
-            padding: 20px;
-        }
-
-        .proximo{
-            cursor: pointer;
-            user-select: none;
-            border-radius: 100%;
-            background-color: gray;
-            padding: 5px;
-            max-width: 50px;
-            margin-left: auto;
-        }
-
-        button {
-            cursor: pointer;
-            border-radius: 100%;
-            max-width: 100px;
-            margin-left: auto;
-            background-color: grey;
-            border: none;
-            padding: 5px;
-        }
-
-        .teste {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        #label-alimento {
-            color: greenyellow;
-            text-transform: lowercase;
-        }
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js" defer></script>
+<script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+{% endblock %}
 
 
-     </style>
 
-    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js" defer></script>
+{% block content %}
+<div class="container-conversor">
+    <div class="titulo-conversor entrada-fade">
+        <h1>Conversor</h1>
+        <p>Troque escolhas ao seu favor.</p>
+    </div>
 
-    <script type="module" src="/static/js/main.js"></script>
-
-</head>
-<body>
-    <h1>TrocaPrato</h1>
-    <form method="POST" action="/comparador/resultado" id="comparador" novalidate>
-
-        <div class="caixa" id="div-alimento-a">
-            <h2>Qual alimento você deseja substituir?</h2>
-            <select name="alimento-a" id="select-alimento-a" required></select>
-            <select id="filtro-a">
-                <option value="todas">todas as categorias</option>
-                <option value="cereais e derivados">cereais e derivados</option>
-                <option value="verduras e hortaliças">verduras e hortaliças</option>
-                <option value="frutas">frutas</option>
-                <option value="gorduras">gorduras</option>
-                <option value="pescados e frutos do mar">pescados e frutos do mar</option>
-                <option value="carnes e derivados">carnes e derivados</option>
-                <option value="leite e derivados">leite e derivados</option>
-                <option value="bebidas">bebidas</option>
-                <option value="ovos e derivados">ovos e derivados</option>
-                <option value="alimentos doces">alimentos doces</option>
-                <option value="outros alimentos">outros alimentos</option>
-                <option value="leguminosas">leguminosas</option>
-                <option value="nozes e sementes">nozes e sementes</option>
-            </select>
-            <p class="escondido" id="msg-erro-1">Informe um alimento.</p>
-        </div>
-
-        <span id="btn-prox-1" class="proximo">-></span>
-
-        <div class="caixa escondido" id="div-peso">
-            <h2>Quantas gramas desse alimento você deveria consumir?</h2>
-            <input type="number" name="peso-a" id="peso-a" min="1" max="999" required>
-            <p class="escondido" id="msg-erro-2">Informe o peso.</p>
-        </div>
-
-        <span id="btn-prox-2" class="proximo escondido">-></span>
-
-        <div class="caixa escondido" id="div-alimento-b">
-            <span class="teste">Você deseja substituir </span><span class="teste" id="label-alimento"></span><span class="teste"> por qual alimento?</span>
-            <select name="alimento-b" id="select-alimento-b" required></select>
-            <select id="filtro-b">
-                <option value="todas">todas as categorias</option>
-                <option value="cereais e derivados">cereais e derivados</option>
-                <option value="verduras e hortaliças">verduras e hortaliças</option>
-                <option value="frutas">frutas</option>
-                <option value="gorduras">gorduras</option>
-                <option value="pescados e frutos do mar">pescados e frutos do mar</option>
-                <option value="carnes e derivados">carnes e derivados</option>
-                <option value="leite e derivados">leite e derivados</option>
-                <option value="bebidas">bebidas</option>
-                <option value="ovos e derivados">ovos e derivados</option>
-                <option value="alimentos doces">alimentos doces</option>
-                <option value="outros alimentos">outros alimentos</option>
-                <option value="leguminosas">leguminosas</option>
-                <option value="nozes e sementes">nozes e sementes</option>
-            </select>
-            <p class="escondido" id="msg-erro-3">Informe o alimento.</p>
-        </div>
+    <div class="layout-conversor-grid ">
         
-        <button id="btn-submit" type="submit" class="escondido">-></button>
-    </form>
-</body>
-</html>
+        <div class="coluna-esquerda-form">
+            <form method="POST" action="/comparador/resultado" id="comparador" novalidate>
+                
+                <div class="caixa-passo entrada-fade delay-3" id="div-alimento-a">
+                    <div class="numero-etapa ">1</div> 
+                    <div class="conteudo-passo  ">
+                        <h2>Qual alimento você deseja substituir?</h2>
+                        <div class="dados-caixa entrada-fade delay-4  ">
+                            <div class="selects-container">
+                                <select id="filtro-a">
+                                    <option value="todas">Todas as categorias</option>
+                                    <option value="cereais e derivados">Cereais e derivados</option>
+                                    <option value="verduras e hortaliças">Verduras e hortaliças</option>
+                                    <option value="frutas">Frutas</option>
+                                    <option value="gorduras">Gorduras</option>
+                                    <option value="pescados e frutos do mar">Pescados e frutos do mar</option>
+                                    <option value="carnes e derivados">Carnes e derivados</option>
+                                    <option value="leite e derivados">Leite e derivados</option>
+                                    <option value="bebidas">Bebidas</option>
+                                    <option value="ovos e derivados">Ovos e derivados</option>
+                                    <option value="alimentos doces">Alimentos doces</option>
+                                    <option value="outros alimentos">Outros alimentos</option>
+                                    <option value="leguminosas">Leguminosas</option>
+                                    <option value="nozes e sementes">Nozes e sementes</option>
+                                </select>
+                                <select name="alimento-a" id="select-alimento-a" class="select-alim-a" required></select>
+                                <p class="escondido animar-erro delay-1" id="msg-erro-1">Informe um alimento.</p>
+                            </div>
+                            <div class="botao-seguir animar-pop delay-2">
+                                <button type="button" id="btn-prox-1" class="proximo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#edece9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="caixa-passo escondido entrada-fade delay-1" id="div-peso"> 
+                    <div class="numero-etapa">2</div>
+                    <div class="conteudo-passo">
+                        <h2>Quantas gramas desse alimento você deveria consumir?</h2>
+                        <div class="dados-caixa entrada-fade delay-2"> 
+                            <div class="input-peso-conteiner">
+                                <div class="input-peso-solo">
+                                    <input type="number" name="peso-a" id="peso-a" min="1" max="999" required placeholder="Ex.: 100">
+                                    <span>g</span>
+                                </div>
+                                <p class="escondido animar-erro delay-1" id="msg-erro-2">Informe o peso.</p>
+                            </div>
+                            <div class="botao-seguir">
+                                <button type="button" id="btn-prox-2" class="proximo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#edece9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="caixa-passo escondido entrada-fade delay-1" id="div-alimento-b">
+                    <div class="numero-etapa">3</div>
+                    <div class="conteudo-passo">
+                        <h2><span class="teste">Você deseja substituir </span><span class="teste" id="label-alimento"></span><span class="teste"> por qual alimento?</span></h2>
+                        <div class="dados-caixa entrada-fade delay-2">
+                            <div class="selects-container">
+                                <select id="filtro-b">
+                                    <option value="todas">Todas as categorias</option>
+                                    <option value="cereais e derivados">Cereais e derivados</option>
+                                    <option value="verduras e hortaliças">Verduras e hortaliças</option>
+                                    <option value="frutas">Frutas</option>
+                                    <option value="gorduras">Gorduras</option>
+                                    <option value="pescados e frutos do mar">Pescados e frutos do mar</option>
+                                    <option value="carnes e derivados">Carnes e derivados</option>
+                                    <option value="leite e derivados">Leite e derivados</option>
+                                    <option value="bebidas">Bebidas</option>
+                                    <option value="ovos e derivados">Ovos e derivados</option>
+                                    <option value="alimentos doces">Alimentos doces</option>
+                                    <option value="outros alimentos">Outros alimentos</option>
+                                    <option value="leguminosas">Leguminosas</option>
+                                    <option value="nozes e sementes">Nozes e sementes</option>
+                                </select>
+                                <select name="alimento-b" id="select-alimento-b" required></select>
+                                <p class="escondido animar-erro" id="msg-erro-3">Informe o alimento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btn-submit" type="submit" class="btn-comparar animar-pop delay-2 escondido">Comparar <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#edece9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+            </form>
+        </div>
+
+        <aside class="coluna-lateral-infos ">
+            <div class="card-info como-funciona entrada-fade delay-2">
+                <h3>Como funciona?</h3>
+                <div class="passo-ajuda  entrada-fade delay-3">
+                    <span class="icone-ajuda">🔍</span>
+                    <p>Usuário busca um alimento que deseja substituir.</p>
+                </div>
+                <div class="seta-ajuda  entrada-fade delay-3 ">↓</div>
+                <div class="passo-ajuda entrada-fade delay-4">
+                    <span class="icone-ajuda">🗄️</span>
+                    <p>Sistema busca no banco de dados alimentos com macronutrientes semelhantes.</p>
+                </div>
+                <div class="seta-ajuda entrada-fade delay-4">↓</div>
+                <div class="passo-ajuda entrada-fade delay-5">
+                    <span class="icone-ajuda">⚖️</span>
+                    <p>São exibidas as comparação de calorias.</p>
+                </div>
+            </div>
+
+            <div class="card-info dica-saudavel entrada-fade delay-6 ">
+                <div class="dica-header">
+                    <span class="icone-folha">🌿</span>
+                    <div class="entrada-fade delay-7">
+                        <h4>Dica saudável</h4>
+                        <p>Pequenas trocas diárias geram grandes resultados!</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+
+{% endblock %}

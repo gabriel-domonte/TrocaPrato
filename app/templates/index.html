@@ -3,13 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bem-vindo!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicio.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/anima-trans.css')}}">
+
 </head>
 <body>
-    <h1>TrocaPrato</h1>
-    <h2>Varie sua dieta</h2>
-    <p>TrocaPrato é uma ferramenta criada para reduzir a monotonia alimentar na dieta de pessoas que fazem acompanhamento nutricional. Os usuários podem indicar um alimento para ser substituído e sua respectiva substituição. A ferramenta compara os macronutrientes de ambos os alimentos e informa quantos gramas do alimento alternativo podem ser consumidos para que o usuário se mantenha na sua meta de calorias.</p>
-    <a href="/login">Fazer login</a>
-    <a href="/cadastro">Cadastre-se</a>
+    <header>
+        <nav class="nav-bar-i">
+            <a href="#resumo" class="entrada-fade">Sobre o projeto</a>
+            <a href="#team" class="entrada-fade">Integrantes</a>
+        </nav>
+    </header>
+
+    <section class="dados-inicio">
+        <div class="textolat">
+                <div class="texto ">
+                <div class="titulo-i">
+                    <h3><span class="tex-bv entrada-fade delay-3">Bem-vindo ao </span><br><span class="climate-crisis nome-site anima-texto1">TrocaPrato!</span></h3>
+                   
+                </div>
+
+            </div>
+            <p class="descricao entrada-fade delay-4">
+                Uma plataforma que ajuda você a encontrar substituições 
+                alimentares mais saudáveis sem abrir mão do sabor.
+
+            </p>
+
+            <div class="botoes-i">
+               <a href="{{ url_for('autenticacao.login') }}" class="btn-login animar-pop">Login</a>
+               <a href="{{ url_for('autenticacao.cadastro') }}" class="btn-cadastro animar-pop">Cadastro</a>
+
+            </div>
+            
+        </div>
+
+        <div class="imagem-lat ">
+            <img class="lupa" src="{{ url_for('static', filename='img/lupa.svg') }}" alt="lupa"><span class="lupa"></span></img>
+            <img class="fundo" src="{{ url_for('static', filename='img/fundo-2.svg') }}" alt=""><span ></span></img>
+            <img class="tigela " src="{{ url_for('static', filename='img/tigela.svg') }}" alt=""></img>
+        </div>
+
+        
+
+        
+    </section>
+
+
+<section class="resumo" id="resumo"> <!-- o id vai ser usavo para linkar lá na nav bar-->
+    <div class="resumo-dados">
+        <h2 >O que você pode fazer?</h2>
+
+        <div class="lista-fun entrada-fade">
+
+            <div class="fun">
+                <h3>⚖️ Comparação de Calorias</h3>
+                <p>Compare alimentos e descubra opções equivalentes com mais equilíbrio nutricional.</p>
+            </div>
+
+            <div class="fun">
+                <h3>⭐ Favoritos</h3>
+                <p>Salve suas substituições preferidas para consultar sempre que precisar.</p>
+            </div>
+
+            <div class="fun">
+                <h3>📊 Informações Nutricionais</h3>
+                <p>Acesse dados nutricionais para tomar decisões mais conscientes.</p>
+        </div>
+    </div>
+    </div>
+    
+</section>
+
+<section class="team" id="team">
+    <h2>Nossa Equipe</h2>
+    <p>Esse projeto foi desenvolvido como avaliação acadêmica do curso de engenharia de software.</p>
+    <h3>Participantes:</h3>
+   
+    <div class="fotos-part">
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/laura.png') }}" alt="">
+            <p>A. Laura</p>
+        </div>
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/julia.jpeg') }}" alt="">
+            <p>A. Julia</p>
+        </div>
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/daniele.png') }}" alt="">
+            <p>Daniele</p>
+        </div>
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/gabriel.png') }}" alt="">
+            <p>Gabriel M.</p>
+        </div>
+
+</div>
+    </div>
+</section>
+
+
+    
 </body>
 </html>
