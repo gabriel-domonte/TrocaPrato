@@ -1,94 +1,98 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 
-{%block title%}Favoritos{%endblock%}
+{% block title %}Favoritos{% endblock %}
 
 {% block content %}
-<body>
 
-    <!--Título-->
-   <section class="titulo-favoritos">
+<section class="titulo-favoritos">
     <h1>Lista de favoritos</h1>
-    <p>Veja e genrecie seus alimentos favoritados.</p>
-   </section>
+    <p>Veja e gerencie seus alimentos favoritados.</p>
+</section>
 
-   <!--Conteúdo-->
-   <main class="container-de-favoritos">
+<main class="container-de-favoritos">
     <section class="favoritados">
         <h2>⭐ Meus favoritos</h2>
 
         {% for par in favoritos %}
-            <div class="card-favorito">
 
-        <div class="info-fav">
-            <div class="icone-fav1">⭐Itens</div>
+        <div class="card-favorito">
 
-            <div>
-                <div class="nome-favorito">
-                    {{ par.nome }}
-                    {% if par.tags %}
-                        {{ par.tags }}
-                    {% endif %}
-                </div>
+            <div class="info-fav">
+                <div class="icone-fav1">⭐ Itens</div>
 
-                <div class="categoria-favorito">
-                    {{ par.nome_b }}
+                <div>
+                    <div class="nome-favorito">
+                        {{ par.nome }}
+                        {% if par.tags %}
+                            {{ par.tags }}
+                        {% endif %}
+                    </div>
+
+                    <div class="categoria-favorito">
+                        {{ par.nome_b }}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="calorias">
-            {{ par.peso_a if par.peso_a else par.peso }}g
-            ➜
-            {{ par.peso_b }}g
-        </div>
-    </div>
-
-    <div class="comparacao-nutrientes">
-
-        <div class="caixa-mini">
-            <h4>{{ par.nome }}</h4>
-
-            <p><strong>Calorias:</strong> {{ par.calorias }} kcal</p>
-
-            <p><strong>Carboidratos:</strong>
-                {{ par.carboidratos }}g
-            </p>
-
-            <p><strong>Proteínas:</strong>
-                {{ par.proteinas }}g
-            </p>
-
-            <p><strong>Lipídios:</strong>
-                {{ par.lipideos }}g
-            </p>
-        </div>
-
-        <div class="seta-equivalencia">
-            ➜ equivale a ➜
-        </div>
-
-        <div class="caixa-mini-favorito">
-            <h4>{{ par.nome_b }}</h4>
-
-            <p><strong>Peso:</strong>
+            <div class="calorias">
+                {{ par.peso_a if par.peso_a else par.peso }}g
+                ➜
                 {{ par.peso_b }}g
-            </p>
+            </div>
 
-            <p><strong>Calorias:</strong>
-                {{ par.calorias }} kcal
-            </p>
+            <!-- 🔥 FORMULÁRIO DE REMOÇÃO -->
+            <form method="POST"
+                  action="{{ url_for('favoritos.remover_favorito') }}"
+                  style="margin-top: 10px;">
+
+                <input type="hidden" name="alimento-a" value="{{ par.id_alimento_a }}">
+                <input type="hidden" name="alimento-b" value="{{ par.id_alimento_b }}">
+                <input type="hidden" name="peso_a" value="{{ par.peso_a }}">
+
+                <button type="submit">
+                    Remover ❌
+                </button>
+            </form>
+
         </div>
 
-    </div>
+        <div class="comparacao-nutrientes">
 
-    {% else %}
+            <div class="caixa-mini">
+                <h4>{{ par.nome }}</h4>
 
-    <div class="sem-favoritos">
-        Você ainda não salvou nenhuma comparação.
-    </div>
+                <p><strong>Calorias:</strong> {{ par.calorias }} kcal</p>
 
-    {% endfor %}
+                <p><strong>Carboidratos:</strong> {{ par.carboidratos }}g</p>
+
+                <p><strong>Proteínas:</strong> {{ par.proteinas }}g</p>
+
+                <p><strong>Lipídios:</strong> {{ par.lipideos }}g</p>
+            </div>
+
+            <div class="seta-equivalencia">
+                ➜ equivale a ➜
+            </div>
+
+            <div class="caixa-mini-favorito">
+                <h4>{{ par.nome_b }}</h4>
+
+                <p><strong>Peso:</strong> {{ par.peso_b }}g</p>
+
+                <p><strong>Calorias:</strong> {{ par.calorias }} kcal</p>
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="sem-favoritos">
+            Você ainda não salvou nenhuma comparação.
+        </div>
+
+        {% endfor %}
+
     </section>
-   </main>
-</body>
-{%endblock%}
+</main>
+
+{% endblock %}

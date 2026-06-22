@@ -6,6 +6,7 @@ with open ('app/data/taco_adaptada.csv', encoding='utf-8') as tabela:
     for linha in tabela:
         colunas = linha.strip().split(',')
         alimento = {
+            'id_alimento': colunas[0],
             'categoria': colunas[1],
             'nome': colunas[2],
             'tags': colunas[3],
