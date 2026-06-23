@@ -1,4 +1,1 @@
-user	id_alimento_a	id_alimento_b	peso_a
-Julia,,,100
-Julia,,,150
-Julia,67,68,100
+user,id_alimento_a,id_alimento_b,peso_a
