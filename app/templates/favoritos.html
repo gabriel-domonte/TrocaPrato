@@ -1,94 +1,124 @@
-{% extends "base.html"%}
-
-{%block title%}Favoritos{%endblock%}
-
+{% extends "base.html"%} {%block title%}Favoritos{%endblock%}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 {% block content %}
 <body>
+  <main class="favoritos-page">
+    <section class="favoritos-content entrada-fade delay-3">
+      <div class="page-fav entrada-fade delay-3">
+        <h1>Favoritos</h1>
+        <p>Seus alimentos e comparações salvos para acesso rápido.</p>
+      </div>
 
-    <!--Título-->
-   <section class="titulo-favoritos">
-    <h1>Lista de favoritos</h1>
-    <p>Veja e genrecie seus alimentos favoritados.</p>
-   </section>
-
-   <!--Conteúdo-->
-   <main class="container-de-favoritos">
-    <section class="favoritados">
-        <h2>⭐ Meus favoritos</h2>
-
+      <div class="favoritos-grid">
         {% for par in favoritos %}
-            <div class="card-favorito">
 
-        <div class="info-fav">
-            <div class="icone-fav1">⭐Itens</div>
+        <div class="favorito-card">
+          <div class="card-top">
+            <h3>{{ par.nome }}</h3>
+          </div>
+
+          <span class="categoria-fav">
+            {% if par.tags %} {{ par.tags }} {% else %} Comparação nutricional
+            {% endif %}
+          </span>
+
+          <p class="equivalencia-fav">
+            {{ par.peso_a if par.peso_a else par.peso }}g ➜ {{ par.peso_b }}g
+          </p>
+
+          <div class="nutrientes-fav">
+            <p>🔥 {{ par.calorias }} kcal</p>
+            <p>🌾 {{ par.carboidratos }}g carb.</p>
+            <p>💪 {{ par.proteinas }}g prot.</p>
+            <p>🧈 {{ par.lipideos }}g lip.</p>
+          </div>
+
+          <div class="comparacao-fav">
+            <div>
+              <strong>{{ par.nome }}</strong>
+            </div>
+
+            <div class="seta">⇄</div>
 
             <div>
-                <div class="nome-favorito">
-                    {{ par.nome }}
-                    {% if par.tags %}
-                        {{ par.tags }}
-                    {% endif %}
-                </div>
-
-                <div class="categoria-favorito">
-                    {{ par.nome_b }}
-                </div>
+              <strong>{{ par.nome_b }}</strong>
             </div>
+          </div>
+
+          <form
+            method="POST"
+            action="{{ url_for('favoritos.remover_favorito') }}"
+            class="form-remover"
+          >
+            <input
+              type="hidden"
+              name="alimento-a"
+              value="{{ par.id_alimento_a }}"
+            />
+            <input
+              type="hidden"
+              name="alimento-b"
+              value="{{ par.id_alimento_b }}"
+            />
+            <input type="hidden" name="peso_a" value="{{ par.peso_a }}" />
+            <div class="remover-fav">
+              <button type="submit" class="remover-favorito">X</button>
+            </div>
+          </form>
         </div>
 
-        <div class="calorias">
-            {{ par.peso_a if par.peso_a else par.peso }}g
-            ➜
-            {{ par.peso_b }}g
-        </div>
-    </div>
+        {% else %}
 
-    <div class="comparacao-nutrientes">
-
-        <div class="caixa-mini">
-            <h4>{{ par.nome }}</h4>
-
-            <p><strong>Calorias:</strong> {{ par.calorias }} kcal</p>
-
-            <p><strong>Carboidratos:</strong>
-                {{ par.carboidratos }}g
-            </p>
-
-            <p><strong>Proteínas:</strong>
-                {{ par.proteinas }}g
-            </p>
-
-            <p><strong>Lipídios:</strong>
-                {{ par.lipideos }}g
-            </p>
+        <div class="sem-favoritos">
+          <h3>❤️ Nenhum favorito encontrado</h3>
+          <p>Você ainda não salvou nenhuma comparação.</p>
         </div>
 
-        <div class="seta-equivalencia">
-            ➜ equivale a ➜
-        </div>
-
-        <div class="caixa-mini-favorito">
-            <h4>{{ par.nome_b }}</h4>
-
-            <p><strong>Peso:</strong>
-                {{ par.peso_b }}g
-            </p>
-
-            <p><strong>Calorias:</strong>
-                {{ par.calorias }} kcal
-            </p>
-        </div>
-
-    </div>
-
-    {% else %}
-
-    <div class="sem-favoritos">
-        Você ainda não salvou nenhuma comparação.
-    </div>
-
-    {% endfor %}
+        {% endfor %}
+      </div>
     </section>
-   </main>
+
+    <aside class="side-tabela">
+      <div class="card-fav como-funciona entrada-fade delay-4">
+        <h3>Como funciona?</h3>
+
+        <div class="passo-ajuda">
+          <span class="icone-ajuda">❤️</span>
+          <p>Salve comparações no conversor.</p>
+        </div>
+
+        <div class="seta-ajuda">↓</div>
+
+        <div class="passo-ajuda">
+          <span class="icone-ajuda">📋</span>
+          <p>Os dados ficam armazenados.</p>
+        </div>
+
+        <div class="seta-ajuda">↓</div>
+
+        <div class="passo-ajuda">
+          <span class="icone-ajuda">⚡</span>
+          <p>Consulte rapidamente quando precisar.</p>
+        </div>
+      </div>
+
+      <div class="card-info dica-saudavel entrada-fade delay-6">
+        <div class="dica-header">
+          <span class="icone-folha">🌿</span>
+
+          <div>
+            <h4>Dica saudável</h4>
+            <p>
+              Compare calorias, proteínas e carboidratos para encontrar opções
+              mais adequadas aos seus objetivos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
 </body>
 {%endblock%}

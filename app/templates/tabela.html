@@ -1,33 +1,51 @@
-{%extends 'base.html'%} {%block title%}Tabela{%endblock%} {% block content%}
-{%block links%}
-<link rel="stylesheet" href="style.css">
-{%endblock%}
-<html>
-  <head></head>
-  <body>
-  <h1 id="titulo-tabela">Tabela de alimentos</h1>
-  <div class="container-tabela">
-    <table class="tabela-alimentos">
-      <!--cabeçalho-->
-      
-      <tr>
-        {% for coluna in colunas %}
-           <th>{{ coluna}}</th>
-        {% endfor %}
-      </tr>
-      
-      <!--dados-->
+{%extends 'base.html'%} {%block title%}Tabela{%endblock%}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+{% block content %}
+<body>
 
-      {% for linha in dados %}
-        <tr>
-           {% for valor in linha %}
-               <td>{{valor}}</td>
-           {% endfor %}
-        </tr>
-      {% endfor %}
+  <main class="conteudo-tabela">
+    <section class="tabela-esquerda">
+      <div class="title-tabela entrada-fade delay-3">
+        <h1>Tabela de alimentos</h1>
+        <p>
+          Consulte e compare informações nutricionais dos alimentos para fazer
+          melhores escolhas.
+        </p>
+      </div>
 
-    </table>
-  </div>
-  </body>
-</html>
+      <div class="table-box entrada-fade delay-5">
+        <table>
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Nome</th>
+              <th>Calorias</th>
+              <th>Proteínas</th>
+              <th>Carboidratos</th>
+              <th>Fibras</th>
+              <th>Lipídios</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for alimento in alimentos [1:] %}
+            <tr>
+              <td>{{alimento.categoria}}</td>
+              <td>{{alimento.nome}} {{alimento.tags}}</td>
+              <td>{{alimento.cal}}</td>
+              <td>{{alimento.prot}}</td>
+              <td>{{alimento.carb}}</td>
+              <td>{{alimento.fib}}</td>
+              <td>{{alimento.lip}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
 {%endblock%}

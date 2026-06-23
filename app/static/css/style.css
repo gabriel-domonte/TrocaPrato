@@ -456,7 +456,6 @@ não fique atrás das caixas ---*/
 
 /* == TELA DE RESULTADOS === */
 
-
 /* Container Principal */
 .resultado-container {
     display: flex;
@@ -617,7 +616,6 @@ não fique atrás das caixas ---*/
 .texto-barra.negativo { color: #d9383a; }
 .texto-barra.neutro { color: #4a5568; background-color: #edf2f7; padding: 8px 12px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; border-left: 4px solid #718096; margin: 4px 0; display: inline-block; width: fit-content; }
 
-/* Estilo das Barras */
 .barra-bg {
     width: 100%;
     height: 12px;
@@ -635,7 +633,6 @@ não fique atrás das caixas ---*/
 .barra-verde { background: linear-gradient(90deg, #11a96d, #0d8555); }
 .barra-vermelha { background: linear-gradient(90deg, #f35f61, #d9383a); }
 
-/* Botão */
 .btn-container {
     display: flex;
     justify-content: center;
@@ -665,82 +662,6 @@ não fique atrás das caixas ---*/
     box-shadow: 0 6px 20px rgba(5, 61, 39, 0.35);
 }
 
-/* --- RESPONSIVIDADE (Para Celulares) --- */
-@media (max-width: 800px) {
-    .resultado-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-    
-    .caixa-res-ali {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .dif-nutri-painel {
-        order: -1;
-        padding: 15px;
-        background-color: #fafafa;
-        border-radius: 10px;
-    }
-
-    .resultado-container h2 {
-        font-size: 1.4rem;
-    }
-
-    .resumo-res {
-        padding: 20px 15px;
-    }
-}
-
-#titulo-tabela{
-    color: #14381C;
-    text-align: center;
-    margin-top: 35px;
-    margin-bottom: 30px;
-    font-size: 40px;
-    font-weight: bold;
-    font-family:'Plus Jakarta Sans' , sans-serif;
-}
-.container-tabela{
-    background-color: #FBCC56;
-    width: 90%;
-    margin: auto;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-
-.tabela-alimentos{
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabela-alimentos th{
-    background-color: #0a6f47;
-    color: white;
-    padding: 20px;
-    font-size: 15px;
-    font-weight: bold;
-    position: sticky;
-    top: 0;
-}
-
-.tabela-alimentos td{
-    color: #14381C;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-}
-.tabela-alimentos th:nth-child(3),td:nth-child(3){
-    width: 180px;
-    max-width: 180px;
-}
-.tabela-alimentos tr:hover td{
-    background-color: #e9bd39;
-}
-
 .formulario-favortitos, .formulario-favoritos form{
     margin: 0;
     padding: 0;
@@ -766,132 +687,330 @@ não fique atrás das caixas ---*/
     background-color: #8a540f;
     box-shadow: 0 6px 20px rgba(197, 162, 10, 0.35);
 }
-.titulo-favoritos {
-    text-align: center;
-    margin: 40px 0;
-}
-.titulo-favoritos h1{
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 40px;
-    font-weight: 800;
-    color: var(--verde-texto);
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-.titulo-favoritos p{
-    color: var(--verde-texto);
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-}
-/* layout principal*/
-.container-de-favoritos{
-    max-width: 850px;
-    margin: 0 auto;
-}
-.card-favorito {
-    background: white;
-    border-radius: 16px;
-    padding: 25px 35px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #ececec;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+
+.conteudo-tabela {
+  width: min(90%, 1200px);
+  margin: 45px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
 }
 
-.info-fav {
-    display: flex;
-    align-items: center;
-    gap: 25px;
+.tabela-esquerda {
+  flex: 1 1 600px;
+  min-width: 280px;
 }
 
-/* Quadrado do ícone */
-.icone-fav1 {
-    width: 80px;
-    height: 80px;
-    background: #fff6d9;
-    color: #edc843;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
+.title-tabela p {
+  font-size: clamp(1rem, 2vw, 1.375rem);
+  color: #555;
+  margin-bottom: 35px;
+  width: 100%;
+  max-width: 700px;
 }
 
-/* Nome */
-.nome-favorito {
-    font-size: 1.5rem;
+.title-tabela h1 {
+  color: #005b4f;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  margin-bottom: 12px;
+}
+
+.table-box {
+  width: 100%;
+  max-height: 700px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+  background: #ffdf52;
+}
+
+th {
+  color: #005b4f;
+  font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+  text-align: left;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 18px 20px;
+  font-size: clamp(0.9rem, 1.3vw, 1.0625rem);
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background: #b7d4af;
+}
+
+.favoritos-page {
+  width: min(95%, 1400px);
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.favoritos-content {
+  flex: 1 1 700px;
+}
+
+.page-fav {
+  margin-bottom: 35px;
+}
+
+.page-fav h1 {
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  color: #005b4f;
+  margin-bottom: 10px;
+}
+
+.page-fav p {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: #666;
+}
+
+.favoritos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.favorito-card {
+  width: 100%;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: 0.3s;
+}
+
+.favorito-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.card-top h3 {
+  color: #005b4f;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.card-top span {
+  font-size: 1.3rem;
+}
+
+.categoria-fav {
+  display: inline-block;
+  background: #eef8ef;
+  color: #2f7d32;
+  padding: 7px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.equivalencia-fav {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 18px;
+}
+
+.nutrientes-fav {
+  background: #fff4f4;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 18px;
+}
+
+.nutrientes-fav p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.nutrientes-fav p:last-child {
+  margin-bottom: 0;
+}
+
+.comparacao-fav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: #c3f1dd;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.comparacao-fav strong {
+  color: #005b4f;
+}
+
+.seta {
+  color: #009879;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.side-tabela {
+  flex: 1 1 300px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-fav {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.card-fav h2 {
+  color: #01322c;
+  margin-bottom: 20px;
+}
+
+.remover-favorito{
+    width: clamp(1.4rem, 3vw, 2rem);
+    height: clamp(1.4rem, 3vw, 2rem);
+    border: none;
+    border-radius: 50%;
+    background-color: #d15749;
+    color: white;
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
     font-weight: bold;
-    color: #00695c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-/* Categoria */
-.categoria-favorito {
-    font-size: 1.1rem;
+.remover-favorito:hover{
+    background-color: #c0392b;
+}
+
+.perfil-page {
+    width: min(90%, 900px);
+    margin: 50px auto;
+    padding: clamp(10px, 2vw, 20px);
+}
+
+.perfil-header {
+    text-align: center;
+    margin-bottom: clamp(20px, 4vw, 35px);
+}
+
+.perfil-header h1 {
+    color: #005b4f;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+}
+
+.perfil-header p {
     color: #666;
-    margin-top: 5px;
+    margin-top: 10px;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
 }
 
-.calorias {
-    font-size: 1.5rem;
-    color: #4a5568;
-}
-
-/* Comparação */
-.comparacao-nutrientes {
+.perfil-card {
     background: white;
-    color: #0c4e08;
-    border-radius: 16px;
-    padding: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 35px;
-    border: 1px solid #ececec;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    border-radius: 20px;
+    padding: clamp(20px, 5vw, 40px);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    margin-bottom: 25px;
 }
 
-.caixa-mini,
-.caixa-mini-favorito {
-    flex: 1;
-    background: #f8faf9;
-    border-radius: 12px;
-    padding: 20px;
-}
-
-.caixa-mini h4,
-.caixa-mini-favorito h4 {
-    color: #00695c;
+.perfil-icon {
+    font-size: clamp(3rem, 8vw, 4rem);
     margin-bottom: 15px;
 }
 
-.caixa-mini p,
-.caixa-mini-favorito p {
-    margin-bottom: 10px;
+.perfil-card h2 {
+    color: #005b4f;
+    margin-bottom: 15px;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
 }
 
-.seta-equivalencia {
-    color: #00695c;
-    font-size: 1.3rem;
-    font-weight: bold;
+.perfil-card p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: clamp(0.95rem, 2vw, 1rem);
 }
 
-/* Sem favoritos */
-.sem-favoritos {
+.button-logout a{
+    display: inline-block;
+    background: #fde37b;
+    color: white;
+    padding: clamp(12px, 2vw, 14px)
+             clamp(20px, 4vw, 30px);
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.button-logout a:hover {
+    background: #c2a53f;
+}
+
+.mensagens-perfil {
+    display: grid;
+    /* automaticamente vira 1 coluna quando faltar espaço */
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card-mensagem {
     background: white;
-    border-radius: 16px;
-    padding: 30px;
-    text-align: center;
-    color: #777;
-    border: 1px solid #ececec;
+    padding: clamp(18px, 3vw, 25px);
+    border-radius: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+
+.card-mensagem h3 {
+    color: #005b4f;
+    margin-bottom: 10px;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+}
+
+.card-mensagem p {
+    color: #555;
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 /* ==========================================================================
-   ADICIONADO: ADAPTAÇÕES PARA TELAS DO CELULAR SEM MECHERS NAS REGRAS ACIMA
+   ADICIONADO: ADAPTAÇÕES PARA TELAS DO CELULAR (PEQUENAS MODIFICAÇÕES)
    ========================================================================== */
 
 @media (max-width: 992px) {
@@ -966,8 +1085,6 @@ não fique atrás das caixas ---*/
 
 @media (max-width: 480px) {
     
-
-
     /* Encolhe o recuo do formulário em telas de celulares bem pequenas */
     form {
         padding-left: 45px;
@@ -1013,5 +1130,33 @@ não fique atrás das caixas ---*/
         padding: 10px;
         text-align: center;
 
+    }
+}
+
+@media (max-width: 800px) {
+    .resultado-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .caixa-res-ali {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dif-nutri-painel {
+        order: -1;
+        padding: 15px;
+        background-color: #fafafa;
+        border-radius: 10px;
+    }
+
+    .resultado-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .resumo-res {
+        padding: 20px 15px;
     }
 }
