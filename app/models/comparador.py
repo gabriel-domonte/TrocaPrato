@@ -1,6 +1,7 @@
 def alimento_a(alimentos, indice, peso_a):
     #retorna um dicionario com o valor nutricional do alimento a
     dict_alimento_a = {
+        'id_alimento_a': alimentos[indice]['id_alimento'],
         'categoria': alimentos[indice]['categoria'],
         'nome': alimentos[indice]['nome'],
         'tags': alimentos[indice]['tags'],
@@ -20,6 +21,7 @@ def alimento_b(alimentos, indice, dict_alimento_a):
     peso_b = round(cal * 100 / float(alimentos[indice]['cal']))
 
     dict_alimento_b = {
+        'id_alimento_b': alimentos[indice]['id_alimento'],
         'categoria': alimentos[indice]['categoria'],
         'nome': alimentos[indice]['nome'],
         'tags': alimentos[indice]['tags'],
