@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo!</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-inicio.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/anima-trans.css')}}">
 
 </head>
 <body>
     <header>
         <nav class="nav-bar-i">
             <a href="#resumo" class="entrada-fade">Sobre o projeto</a>
-            <a href="#team" class="entrada-fade">Integrantes</a>
+            <a href="#equipe" class="entrada-fade">Integrantes</a>
         </nav>
     </header>
 
     <section class="dados-inicio">
         <div class="textolat">
-                <div class="texto ">
                 <div class="titulo-i">
-                    <h3><span class="tex-bv entrada-fade delay-3">Bem-vindo ao </span><br><span class="climate-crisis nome-site anima-texto1">TrocaPrato!</span></h3>
-                   
+                    <h3><span class="txt-bv entrada-fade delay-4">Bem-vindo ao </span><br><span class="climate-crisis nome-site anima-texto1">TrocaPrato!</span></h3>
                 </div>
 
-            </div>
-            <p class="descricao entrada-fade delay-4">
+            
+            <p class="descricao entrada-fade delay-6">
                 Uma plataforma que ajuda você a encontrar substituições 
                 alimentares mais saudáveis sem abrir mão do sabor.
 
@@ -41,9 +38,9 @@
         </div>
 
         <div class="imagem-lat ">
-            <img class="lupa" src="{{ url_for('static', filename='img/lupa.svg') }}" alt="lupa"><span class="lupa"></span></img>
-            <img class="fundo" src="{{ url_for('static', filename='img/fundo-2.svg') }}" alt=""><span ></span></img>
-            <img class="tigela " src="{{ url_for('static', filename='img/tigela.svg') }}" alt=""></img>
+            <img class="lupa" src="{{ url_for('static', filename='img/lupa.svg') }}" alt="lupa">
+            <img class="fundo" src="{{ url_for('static', filename='img/fundo-1.svg') }}" alt="fundo">
+            <img class="tigela" src="{{ url_for('static', filename='img/tigela.svg') }}" alt="tigela">
         </div>
 
         
@@ -53,7 +50,7 @@
 
 
 <section class="resumo" id="resumo"> <!-- o id vai ser usavo para linkar lá na nav bar-->
-    <div class="resumo-dados">
+    <div class="resumo-dados" id="resumo">
         <h2 >O que você pode fazer?</h2>
 
         <div class="lista-fun entrada-fade">
@@ -77,7 +74,7 @@
     
 </section>
 
-<section class="team" id="team">
+<section class="equipe" id="equipe">
     <h2>Nossa Equipe</h2>
     <p>Esse projeto foi desenvolvido como avaliação acadêmica do curso de engenharia de software.</p>
     <h3>Participantes:</h3>
@@ -103,8 +100,6 @@
             <img src="{{ url_for('static', filename='img/gabriel.png') }}" alt="">
             <p>Gabriel M.</p>
         </div>
-
-</div>
     </div>
 </section>
 

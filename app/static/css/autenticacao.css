@@ -1,14 +1,6 @@
-/* versão responsive para login e cadastro */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Climate+Crisis:YEAR@2010&family=Erica+One&family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
 
 :root {
     --verde-principal: #0a6f47;
@@ -16,6 +8,17 @@
     --verde-hover: #0c8153;
     --fundo: #fcf9f2;
     --branco: #ffffff;
+    --cinza-borda: #e4e4e4;
+    --cinza-texto: #7c7c7c;
+    --cinza-escuro: #666666;
+    --erro: #bf0000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -25,10 +28,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden; /* evita barra de rolagem horizontal */
-    overflow-y: auto;   /* permite rolar a tela verticalmente no celular */
-    padding: 2rem 0;    /* espaco seguro no topo/base para telas pequenas */
+    overflow-x: hidden; /*não aparecerá barra de rolagem horizontal*/
+    overflow-y: auto;
+    padding: 2rem 0;
 }
+
 
 .auth-container {
     z-index: 3;
@@ -36,19 +40,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 1rem;
 }
 
 .auth-card {
     width: 100%;
-    max-width: 400px; /* se adapta a celulares e nao passa de 420px no pc */
-    background: white;
-    padding: 2rem 1.5rem; /* padding reduzido para aproveitar espaco no celular */
+    max-width: 400px;
+    background: var(--branco);
+    padding: 2rem 1.5rem;
     border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.6rem;
 }
 
 .auth-card h1 {
@@ -66,20 +70,20 @@ body {
 
 .auth-card p {
     text-align: center;
-    color: #7c7c7c;
+    color: var(--cinza-texto);
     font-size: 0.95rem;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 1.1rem;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .campo label {
@@ -91,11 +95,11 @@ form {
 .campo input {
     height: 48px;
     width: 100%;
-    border: 2px solid #e4e4e4;
+    border: 2px solid var(--cinza-borda);
     border-radius: 12px;
-    padding: 0 15px;
+    padding: 0 1rem;
     outline: none;
-    transition: .3s;
+    transition: 0.3s;
     font-size: 0.95rem;
 }
 
@@ -104,16 +108,16 @@ form {
 }
 
 button {
-    margin-top: 10px;
+    margin-top: 0.6rem;
     height: 50px;
     border: none;
     border-radius: 12px;
     background: var(--verde-principal);
-    color: white;
-    font-size: 16px;
+    color: var(--branco);
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 button:hover {
@@ -123,7 +127,7 @@ button:hover {
 
 span {
     text-align: center;
-    color: #666;
+    color: var(--cinza-escuro);
     font-size: 0.9rem;
 }
 
@@ -137,57 +141,41 @@ span a:hover {
     text-decoration: underline;
 }
 
-.bg-decoracao {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1000px;
-    z-index: 1;
-    opacity: .3;
-    pointer-events: none; /* impede que a imagem intercepte cliques por engano */
-}
-
-.bg-decoracao img {
-    width: 100%;
-}
-
 #msg-erro {
-    color: #bf0000;
+    color: var(--erro);
     font-size: 0.85rem;
     font-weight: 600;
-    margin-top: 2px;
+    margin-top: 0.1rem;
 }
 
 .requisitos-senha {
-    padding: 10px 5px;
-    color: #053d27;
+    padding: 0.6rem 0.3rem;
+    color: var(--verde-texto);
     font-weight: 500;
-    font-size: 13px;
+    font-size: 0.8rem;
 }
 
 .requisitos-senha p {
-    font-size: 14px;
+    font-size: 0.85rem;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     text-align: left;
 }
 
 .requisitos-senha ul {
-    list-style-position: inside; /* mantem as bolinhas alinhadas dentro do card */
+    list-style-position: inside;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0.25rem;
 }
 
-/* desktop */
 
 @media (min-width: 768px) {
     body {
-        padding: 0; /* remove o padding extra quando cabe tudo no monitor */
+        padding: 0;
     }
 
     .auth-card {
-        padding: 40px; /* volta ao espaçamento original maior no computador */
+        padding: 2.5rem;
     }
 }

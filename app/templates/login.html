@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - TrocaPrato</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-authen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/autenticacao.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/anima-trans.css') }}"> -->
 </head>
 <body>
 
@@ -20,7 +19,7 @@
             <p>Entre na sua conta</p>
 
             {% if erros.geral %}
-                <p class="erro">{{ erros.geral }}</p>
+                <p class="erro animar-erro" id="msg-erro">{{ erros.geral }}</p>
             {% endif %}
 
             <form method="POST" action="/login">

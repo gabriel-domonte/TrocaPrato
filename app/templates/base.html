@@ -6,31 +6,33 @@
     <title>{% block title %}TrocaPrato{% endblock %}</title>
     
     {% block links %}{% endblock %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}"> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/anima-trans.css')}}">
     {% block script %}{% endblock %}
 </head>
 <body>
-    <!-- Cabeçalho e navbar para todo o site -->
     <header class="navbar">
         <div class="logo">
             <img src="{{ url_for('static', filename='/img/logotp.png') }}" alt="logo" width="280" height="200">
         </div>
-        
+            <button class="botao-burguer" aria-label="Abrir menu" onclick="abrirMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-        <ul>
-            <li><a href="{{ url_for('index') }}">Conversor</a></li>
-            <li class="menu-divisor">|</li>
-            <li><a href="{{ url_for('favoritos.exibir_favoritos') }}">Favoritos</a></li>            
-            <li class="menu-divisor">|</li>
-            <li><a href="{{ url_for('tabela.exibir_tabela') }}">Tabela</a></li>
-            <li class="menu-divisor">|</li>
-            <li><a href="{{ url_for('perfil') }}">Perfil</a></li>
-        </ul>
+            <ul id="nav-menu">
+                <li><a href="{{ url_for('index') }}">Conversor</a></li>
+                <li class="menu-divisor">|</li>
+                <li><a href="{{ url_for('favoritos.exibir_favoritos') }}">Favoritos</a></li>            
+                <li class="menu-divisor">|</li>
+                <li><a href="{{ url_for('tabela.exibir_tabela') }}">Tabela</a></li>
+                <li class="menu-divisor">|</li>
+                <li><a href="{{ url_for('perfil') }}">Perfil</a></li>
+            </ul>
     </header>
 
-    <!-- Conteúdo das páginas -->
+
     <main>
 
         <div class="mensagens-flash">{% with messages = get_flashed_messages() %}
@@ -85,6 +87,17 @@
         </div>
 
     </footer>
+
+
+    <script>
+        function abrirMenu() {
+            const menu = document.getElementById('nav-menu'); /*são os links da navbar*/
+            const button = document.querySelector('.botao-burguer');
+            menu.classList.toggle('ativo'); //ao clicar no botão ele vai receber uma classe
+                                            // e essa classe ganha ou perde essa classe ativo/aberto
+            button.classList.toggle('aberto');
+        }
+    </script>
 
 
 </body>

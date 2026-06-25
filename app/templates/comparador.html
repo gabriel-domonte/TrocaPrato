@@ -4,6 +4,7 @@
 
 {% block links %}
 <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/comparador.css')}}">
 {% endblock %}
 
 {% block script %}
@@ -64,7 +65,7 @@
                     <div class="conteudo-passo">
                         <h2>Quantas gramas desse alimento você deveria consumir?</h2>
                         <div class="dados-caixa entrada-fade delay-2"> 
-                            <div class="input-peso-conteiner">
+                            <div class="input-peso-container">
                                 <div class="input-peso-solo">
                                     <input type="number" name="peso-a" id="peso-a" min="1" max="999" required placeholder="Ex.: 100">
                                     <span>g</span>

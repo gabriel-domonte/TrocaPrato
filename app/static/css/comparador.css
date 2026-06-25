@@ -1,0 +1,368 @@
+/*estilo para o comparador*/
+
+
+.container-conversor {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+.titulo-conversor {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.titulo-conversor h1 {
+    font-size: 2.2rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900;
+    color: var(--verde-texto);
+    margin-bottom: 0.3rem;
+}
+
+.titulo-conversor p { 
+    color: #555; 
+    font-size: 1.05rem; 
+}
+
+.layout-conversor-grid {
+    display: grid;
+    grid-template-columns: 1fr; /*apenas uma coluna para mobile*/
+    gap: 1.8rem;
+    align-items: start;
+    width: 100%;
+}
+
+.coluna-esquerda-form {
+    width: 100%;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.25rem;
+    position: relative;
+    padding-left: 45px; /* recuo menor nativo para mobile */
+}
+
+/* escondido por padrão no mobile */
+form::before { /*linha que fica antes do formulário*/
+    display: none;
+    content: "";
+    position: absolute;
+    left: 21px; 
+    top: 35px;
+    bottom: 120px;
+    width: 2px;
+    border-left: 2px dashed var(--verde-principal);
+    z-index: 0;
+    animation: fadeInSuave 0.6s both;
+    animation-delay: 2s;
+}
+
+.caixa-passo {
+    width: 100%;
+    background-color: var(--amarelo-card);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra-media);
+    position: relative; 
+    transition: transform var(--transicao-padrao);
+}
+
+.caixa-passo:hover {
+    transform: scale(1.01);
+}
+
+.conteudo-passo {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.caixa-passo h2 {
+    color: var(--verde-texto);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+}
+
+.numero-etapa {
+    position: absolute;
+    left: -45px;
+    top: 24px;   
+    width: 34px;
+    height: 34px;
+    background-color: var(--verde-texto);
+    color: var(--branco);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: var(--sombra-leve);
+    z-index: 10;
+}
+
+
+.dados-caixa {
+    display: flex;
+    flex-direction: column; 
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.selects-container, 
+.input-peso-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.caixa-passo select {
+    background-color: var(--cinza-claro);
+    border-radius: 10px;
+    border: none;
+    padding: 0.75rem;
+    width: 100%;
+    box-shadow: var(--sombra-leve);
+    outline: none;
+}
+
+.ts-wrapper { /*dropdown que precisa ficar acima dos elementos quando for ativado*/
+    position: relative; 
+    z-index: 1000; 
+}
+
+
+#div-alimento-a { 
+    z-index: 10; 
+}
+
+#div-peso { 
+    z-index: 1; 
+}
+
+#div-alimento-b { 
+    z-index: 1; 
+}
+
+.ts-control { 
+    border-radius: 10px;
+    border: none;
+    padding: 0.75rem;
+    background-color: var(--cinza-claro);
+    box-shadow: var(--sombra-leve);
+    z-index: 9999;
+}
+
+.input-peso-solo {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+    width: 100%; /* Ocupa largura total no mobile */
+    box-shadow: var(--sombra-leve);
+}
+
+.input-peso-solo input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.input-peso-solo span {
+    padding: 0.75rem 1.1rem;
+    background-color: #f5f5f5;
+    color: #666;
+    font-weight: 600;
+    border-left: 1px solid #ddd;
+}
+
+.proximo {
+    cursor: pointer;
+    background-color: var(--verde-principal);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transicao-padrao);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 5px auto 0 auto; /* Centralizado no mobile */
+}
+
+.proximo:hover {
+    background-color: var(--verde-hover);
+    transform: scale(1.05);
+}
+
+#label-alimento {
+    background-color: var(--verde-principal);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-right: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.msg-erro, #msg-erro-1, #msg-erro-2, #msg-erro-3 {
+    color: var(--vermelho-erro);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.btn-comparar {
+    cursor: pointer;
+    background-color: var(--verde-texto);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.85rem 2.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin: 1.25rem auto 0 auto;
+    transition: var(--transicao-padrao);
+    box-shadow: 0 4px 15px rgba(5, 61, 39, 0.2);
+}
+
+.btn-comparar:hover {
+    background-color: var(--verde-hover);
+    transform: translateY(-2px);
+}
+
+
+.coluna-lateral-infos {
+    display: none; /* escondido por padrão em telas pequenas */
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.card-info {
+    background-color: var(--branco);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra-leve);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.como-funciona h3 {
+    color: var(--verde-texto);
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.passo-ajuda {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.icone-ajuda { 
+    font-size: 1.3rem; 
+}
+
+.passo-ajuda p { 
+    font-size: 0.9rem; 
+    color: #444; 
+    line-height: 1.4; 
+}
+
+.seta-ajuda {
+    text-align: center;
+    color: var(--verde-principal);
+    font-weight: 700;
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+.dica-header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icone-folha {
+    font-size: 1.5rem;
+    background-color: #e6f4ea;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.dica-header h4 { 
+    color: var(--verde-texto); 
+    font-size: 1rem; 
+    font-weight: 700; 
+    margin-bottom: 2px; 
+}
+
+.dica-header p { 
+    font-size: 0.88rem; 
+    color: #555; 
+}
+
+
+/*para tablets*/
+
+@media (min-width: 481px) {
+    form {
+        padding-left: 65px;
+    }
+
+    form::before {
+        display: block; /* linha tracejada aparece */
+    }
+
+    .numero-etapa {
+        left: -65px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+        top: 20px;
+    }
+
+    .dados-caixa {
+        flex-direction: row; /* lado a lado */
+        gap: 15px;
+    }
+
+    .input-peso-solo {
+        width: 240px; 
+    }
+
+    .proximo {
+        margin: 0;
+    }
+}
+
+/*para desktop*/
+@media (min-width: 992px) {
+    .layout-conversor-grid {
+        grid-template-columns: 1fr 350px; /* grid de duas colunas */
+        gap: 40px;
+    }
+
+    .coluna-lateral-infos {
+        display: flex; /* aside aparece elegantemente na direita */
+    }
+}
