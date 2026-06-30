@@ -1,0 +1,145 @@
+@keyframes fadeInSuave {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.entrada-fade {
+    animation: fadeInSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Delays (atrasos) para criar o efeito cascata (um elemento surge após o outro) */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.8s; }
+.delay-4{ animation-delay: 1s;}
+.delay-5{ animation-delay: 1.3s;}
+.delay-6{ animation-delay: 1.6s;}
+.delay-7{ animation-delay: 1.9s;}
+.delay-max{ animation-delay: 3s ;}
+
+
+@keyframes flutuar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animar-flutuar {
+    animation: flutuar 3s ease-in-out infinite; /* infinite = roda para sempre */
+}
+
+
+@keyframes flutuar2 {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animar-flutuar2{
+    animation: flutuar2 2s ease-in-out infinite; /* infinite = roda para sempre */
+}
+
+
+
+@keyframes lupa-girar{
+    0%{
+        transform: rotate(-20deg);
+    }
+
+    50%{
+        transform: rotate(20deg);
+    }
+
+    100%{
+        transform: rotate(-20deg);
+    }
+}
+
+
+.animar-contornar{
+    animation: lupa-girar 4s linear infinite;
+}
+
+@keyframes tremerErro {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.animar-erro {
+    animation: tremerErro 0.4s ease-in-out;
+}
+
+
+
+@keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    80% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.animar-pop {
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: 2s;
+}
+
+
+@keyframes anima-texto1 {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.anima-texto1{
+    animation: anima-texto1 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation-delay: 1.5s;
+}
+
+
+@keyframes focar-e-juntar-txt {
+  0% {
+    letter-spacing: 1em;
+    transform: translateZ(300px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(12px);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.anima-texto2{
+    animation: focar-e-juntar-txt 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+};
+
+
+
+/* essa entrada é para o efeito de scrollar a tela e aparecer os elementos */
+@keyframes entrada-Scroll{
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+}
+
+
+.entrada-scroll{
+     animation: entrada-Scroll;
+    animation-timeline: view();  /*quando o container for visto a animação vai acontecer*/
+    animation-range: entry 0% cover 50%; /*divisao da animação, finaliza quando estiver na metade da*/
+}

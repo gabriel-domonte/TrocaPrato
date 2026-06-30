@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+
+</head>
+<body>
+    <header>
+        <nav class="nav-bar-i">
+            <a href="#resumo" class="entrada-fade">Sobre o projeto</a>
+            <a href="#equipe" class="entrada-fade">Integrantes</a>
+        </nav>
+    </header>
+
+    <section class="dados-inicio">
+        <div class="textolat">
+                <div class="titulo-i">
+                    <h3><span class="txt-bv entrada-fade delay-4">Bem-vindo ao </span><br><span class="climate-crisis nome-site anima-texto1">TrocaPrato!</span></h3>
+                </div>
+
+            
+            <p class="descricao entrada-fade delay-6">
+                Uma plataforma que ajuda você a encontrar substituições 
+                alimentares mais saudáveis sem abrir mão do sabor.
+
+            </p>
+
+            <div class="botoes-i">
+               <a href="{{ url_for('autenticacao.login') }}" class="btn-login animar-pop">Login</a>
+               <a href="{{ url_for('autenticacao.cadastro') }}" class="btn-cadastro animar-pop">Cadastro</a>
+
+            </div>
+            
+        </div>
+
+        <div class="imagem-lat ">
+            <img class="lupa" src="{{ url_for('static', filename='img/lupa.svg') }}" alt="lupa">
+            <img class="fundo" src="{{ url_for('static', filename='img/fundo-1.svg') }}" alt="fundo">
+            <img class="tigela" src="{{ url_for('static', filename='img/tigela.svg') }}" alt="tigela">
+        </div>
+
+        
+
+        
+    </section>
+
+
+<section class="resumo" id="resumo"> <!-- o id vai ser usavo para linkar lá na nav bar-->
+    <div class="resumo-dados" id="resumo">
+        <h2 >O que você pode fazer?</h2>
+
+        <div class="lista-fun entrada-fade">
+
+            <div class="fun">
+                <h3>⚖️ Comparação de Calorias</h3>
+                <p>Compare alimentos e descubra opções equivalentes com mais equilíbrio nutricional.</p>
+            </div>
+
+            <div class="fun">
+                <h3>⭐ Favoritos</h3>
+                <p>Salve suas substituições preferidas para consultar sempre que precisar.</p>
+            </div>
+
+            <div class="fun">
+                <h3>📊 Informações Nutricionais</h3>
+                <p>Acesse dados nutricionais para tomar decisões mais conscientes.</p>
+        </div>
+    </div>
+    </div>
+    
+</section>
+
+<section class="equipe" id="equipe">
+    <h2>Nossa Equipe</h2>
+    <p>Esse projeto foi desenvolvido como avaliação acadêmica do curso de engenharia de software.</p>
+    <h3>Participantes:</h3>
+   
+    <div class="fotos-part">
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/laura.png') }}" alt="">
+            <p>A. Laura</p>
+        </div>
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/julia.jpeg') }}" alt="">
+            <p>A. Julia</p>
+        </div>
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/daniele.png') }}" alt="">
+            <p>Daniele</p>
+        </div>
+
+        <div class="integrante">
+            <img src="{{ url_for('static', filename='img/gabriel.png') }}" alt="">
+            <p>Gabriel M.</p>
+        </div>
+    </div>
+</section>
+
+
+    
+</body>
+</html>
