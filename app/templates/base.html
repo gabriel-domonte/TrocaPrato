@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}TrocaPrato{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     
     {% block links %}{% endblock %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+
+    <script src="{{ url_for('static', filename='js/menu.js') }}" defer></script>
     {% block script %}{% endblock %}
+    
 </head>
 <body>
     <header class="navbar">
         <div class="logo">
             <img src="{{ url_for('static', filename='/img/logotp.png') }}" alt="logo" width="280" height="200">
         </div>
-            <button class="botao-burguer" aria-label="Abrir menu" onclick="abrirMenu()">
+            <button class="botao-burguer" aria-label="Abrir menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <ul id="nav-menu">
-                <li><a href="{{ url_for('index') }}">Conversor</a></li>
+                <li><a href="{{ url_for('comparador') }}">Conversor</a></li>
                 <li class="menu-divisor">|</li>
                 <li><a href="{{ url_for('favoritos.exibir_favoritos') }}">Favoritos</a></li>            
                 <li class="menu-divisor">|</li>
@@ -34,18 +37,6 @@
 
 
     <main>
-
-        <div class="mensagens-flash">{% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alerta-flash">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </div>
-
         {% block content %}{% endblock %}
     </main>
     <footer class="footer">
@@ -88,17 +79,13 @@
 
     </footer>
 
-
-    <script>
-        function abrirMenu() {
-            const menu = document.getElementById('nav-menu'); /*são os links da navbar*/
-            const button = document.querySelector('.botao-burguer');
-            menu.classList.toggle('ativo'); //ao clicar no botão ele vai receber uma classe
-                                            // e essa classe ganha ou perde essa classe ativo/aberto
-            button.classList.toggle('aberto');
-        }
-    </script>
-
-
 </body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert("{{ messages[0] }}")
+        </script>
+    {% endif %}
+{% endwith %}
 </html>

@@ -20,7 +20,7 @@ export async function carregarAlimentos() {
 }
 
 export function initTomSelect(select, optionsOriginal) {
-    /* cria uma nova instância do Tom Select */
+    /* chama a classe TomSelect para criar um novo seletor*/
     return new TomSelect(select,{
         maxOptions: 559,
         options: optionsOriginal,

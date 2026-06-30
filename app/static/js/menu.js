@@ -1,9 +1,7 @@
-const menuToggle =  document.querySelector('.menu-toggle')
-const navLinks = document.querySelector('.nav-links')
+const menu = document.getElementById('nav-menu');
+const button = document.querySelector('.botao-burguer');
 
-
-// isso é um ouvinte de evento, ao clicar vai fazer a função abaixo
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active'); //alternar = toggle
-    navLinks.classList.toggle('active');
-})
+button.addEventListener('click', () => {
+    menu.classList.toggle('ativo');
+    button.classList.toggle('aberto');
+});

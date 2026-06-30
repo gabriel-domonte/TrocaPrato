@@ -67,6 +67,16 @@ tbody tr:hover {
   background: #b7d4af;
 }
 
+.disclaimer {
+  font-size: clamp(0.9rem, 1.3vw, 1.0625rem);
+  color: #555;
+  margin-top: 35px;
+  text-align: center;
+}
+
+a {
+  color: #005b4f;
+}
 
 @media (max-width: 768px) {
     

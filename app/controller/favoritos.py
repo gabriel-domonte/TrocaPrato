@@ -7,7 +7,7 @@ favoritos_bp = Blueprint('favoritos', __name__)
 def salvar_comparacao():
     usuario = session.get('usuario_logado')
     if not usuario:
-        return redirect(url_for('login'))
+        return redirect('/')
     id_alimento_a = request.form['alimento-a']
     id_alimento_b = request.form['alimento-b']
     peso_a = request.form['peso_a']
@@ -18,11 +18,11 @@ def salvar_comparacao():
         flash ("Comparação já está favoritada!")
     return redirect(url_for('favoritos.exibir_favoritos'))
 
-@favoritos_bp.route("/exibir_favoritos")
+@favoritos_bp.route("/favoritos")
 def exibir_favoritos():
     usuario = session.get('usuario_logado')
     if not usuario:
-        return redirect(url_for('login'))
+        return redirect('/')
     favoritos = favoritos_detalhados(usuario)
     return render_template('favoritos.html', favoritos=favoritos)
 
@@ -30,7 +30,7 @@ def exibir_favoritos():
 def remover_favorito():
     usuario = session.get('usuario_logado')
     if not usuario:
-        return redirect(url_for('login'))
+        return redirect('/')
     id_alimento_a = request.form['alimento-a']
     id_alimento_b = request.form['alimento-b']
     peso_a = request.form['peso_a']

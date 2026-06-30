@@ -1,4 +1,7 @@
-{%extends 'base.html'%} {%block title%}Perfil{%endblock%} 
+{%extends 'base.html'%} 
+
+{%block title%}Perfil - TrocaPrato{%endblock%}
+
 {% block links %}
   <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css')}}">
@@ -12,7 +15,7 @@
     <p>Gerencie sua sessão no TrocaPrato.</p>
   </section>
 
-  <section class="perfil-card entrada-fade delay-2>
+  <section class="perfil-card entrada-fade delay-2">
     <div class="perfil-icon entrada-fade delay-3">👤</div>
     <div class="entrada-fade delay-4">
     <h2>Olá!</h2>
@@ -22,6 +25,7 @@
       nutricionais.
     </p>
     </div>
+    <div class="button-alterar entrada-fade delay-5"><a href="/alterar-senha">Alterar senha</a></div>
     <div class="button-logout entrada-fade delay-5"><a href="/logout">Sair da conta</a></div>
     
   </section>

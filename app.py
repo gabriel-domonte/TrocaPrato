@@ -1,15 +1,18 @@
 from flask import Flask, render_template, send_file, session, redirect
-from config import Config
+from dotenv import load_dotenv
+import os
 from app.controller.comparador import comparador_bp
 from app.controller.autenticacao import autenticacao_bp
 from app.controller.favoritos import favoritos_bp
 from app.controller.tabela import tabela_bp
 
+load_dotenv()
+
 app = Flask(__name__,
             template_folder='app/templates',
             static_folder='app/static')
 
-app.config.from_object(Config)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 @app.route('/app/data/taco_adaptada.csv')
 def taco_adaptada():
@@ -29,24 +32,20 @@ def comparador():
     
     return render_template('comparador.html', erros={})
 
+@app.route('/perfil')
+def perfil():
+    if 'usuario_logado' not in session:
+        return redirect('/')
+    
+    return render_template('perfil.html')
+
 app.register_blueprint(comparador_bp, url_prefix='/comparador')
 
 app.register_blueprint(autenticacao_bp)
 
-app.register_blueprint(favoritos_bp, url_prefix='/favoritos')
+app.register_blueprint(favoritos_bp)
     
-app.register_blueprint(tabela_bp, url_prefix='/tabela')
-
-
-@app.route("/perfil")
-def perfil():
-    return render_template('perfil.html')
+app.register_blueprint(tabela_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)
-    #para atualizar depois das modificações
-
-    
-if __name__ == '__main__':
-    app.run(debug=False)
-
