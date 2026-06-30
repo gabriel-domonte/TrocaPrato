@@ -58,7 +58,7 @@ pip install -r requirements.txt
 Crie um arquivo **.env** na raiz do projeto e adicione o seguinte conteúdo:
 
 ```bash
-FLASK_SECRET_KEY=sua_chave_secreta_aqui
+SECRET_KEY=sua_chave_secreta_aqui
 ```
 
 ### 6. Execute a aplicação
