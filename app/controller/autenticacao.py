@@ -1,5 +1,5 @@
 from flask import request, Blueprint, session, redirect, flash, render_template
-from app.models.autenticacao import logar, erros_login, cadastrar, erros_cadastro
+from app.models.autenticacao import erros_login, cadastrar, erros_cadastro, alterar_senha, erros_alterar_senha
 
 autenticacao_bp = Blueprint('autenticacao', __name__)
 
@@ -43,8 +43,7 @@ def cadastro():
         if not erros:
             cadastrar(usuario, senha1)
             flash('Cadastro realizado com sucesso')
-    
-        return render_template('cadastro.html', erros=erros)
+            return redirect('/login')
     
     return render_template('cadastro.html', erros=erros)
 
@@ -53,3 +52,27 @@ def logout ():
     #remove o usuário da sessão e redireciona para página inicial
     session.pop('usuario_logado', None)
     return redirect('/')
+
+@autenticacao_bp.route('/alterar-senha', methods=['GET','POST'])
+def alteracao_senha():
+    #se o usuário não estiver logado, redireciona para página inicial
+    if 'usuario_logado' not in session:
+        return redirect('/')
+    
+    erros = {}
+
+    #rece os dados do formulário e chama a função alterar_senha caso não haja erros
+    if request.method == 'POST':
+        usuario = session['usuario_logado']
+        senha_antiga = request.form['senha-antiga']
+        senha_nova = request.form['senha-nova']
+        confirmar_senha = request.form['confirmar-senha']
+
+        erros = erros_alterar_senha(usuario, senha_antiga, senha_nova, confirmar_senha)
+
+        if not erros:
+            alterar_senha(usuario, senha_nova)
+            flash('Senha alterada com sucesso')
+            return redirect('/perfil')
+    
+    return render_template('alterar.html', erros=erros)

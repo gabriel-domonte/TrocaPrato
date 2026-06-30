@@ -51,17 +51,34 @@
 
 .button-logout a{
     display: inline-block;
-    background: #fde37b;
+    background: #053d27;
     color: white;
     padding: clamp(12px, 2vw, 14px)
              clamp(20px, 4vw, 30px);
     border-radius: 12px;
     text-decoration: none;
     font-weight: 600;
+    margin-bottom: 5px;
 }
 
 .button-logout a:hover {
-    background: #c2a53f;
+    background: #0a6f47;
+}
+
+.button-alterar a{
+    display: inline-block;
+    background: #f7d05c;
+    color: white;
+    padding: clamp(12px, 2vw, 14px)
+             clamp(20px, 4vw, 30px);
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.button-alterar a:hover {
+    background: #8a540f;
 }
 
 .mensagens-perfil {
