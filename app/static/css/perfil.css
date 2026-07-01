@@ -1,0 +1,110 @@
+
+
+.perfil-page {
+    width: min(90%, 900px);
+    margin: 50px auto;
+    padding: clamp(10px, 2vw, 20px);
+}
+
+.perfil-header {
+    text-align: center;
+    margin-bottom: clamp(20px, 4vw, 35px);
+}
+
+.perfil-header h1 {
+    color: #005b4f;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+}
+
+.perfil-header p {
+    color: #666;
+    margin-top: 10px;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+.perfil-card {
+    background: white;
+    border-radius: 20px;
+    padding: clamp(20px, 5vw, 40px);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    margin-bottom: 25px;
+}
+
+.perfil-icon {
+    font-size: clamp(3rem, 8vw, 4rem);
+    margin-bottom: 15px;
+}
+
+.perfil-card h2 {
+    color: #005b4f;
+    margin-bottom: 15px;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
+
+.perfil-card p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+}
+
+.button-logout a{
+    display: inline-block;
+    background: #053d27;
+    color: white;
+    padding: clamp(12px, 2vw, 14px)
+             clamp(20px, 4vw, 30px);
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.button-logout a:hover {
+    background: #0a6f47;
+}
+
+.button-alterar a{
+    display: inline-block;
+    background: #f7d05c;
+    color: white;
+    padding: clamp(12px, 2vw, 14px)
+             clamp(20px, 4vw, 30px);
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.button-alterar a:hover {
+    background: #8a540f;
+}
+
+.mensagens-perfil {
+    display: grid;
+    /* automaticamente vira 1 coluna quando faltar espaço */
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card-mensagem {
+    background: white;
+    padding: clamp(18px, 3vw, 25px);
+    border-radius: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+
+.card-mensagem h3 {
+    color: #005b4f;
+    margin-bottom: 10px;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+}
+
+.card-mensagem p {
+    color: #555;
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+

@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+
+{%block title%}Tabela Nutricional - TrocaPrato{%endblock%}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tabela.css')}}">
+{% endblock %}
+
+{% block content %}
+<body>
+
+  <main class="conteudo-tabela">
+    <section class="tabela-esquerda">
+      <div class="title-tabela entrada-fade delay-3">
+        <h1>Tabela de alimentos</h1>
+        <p>
+          Consulte e compare informações nutricionais dos alimentos para fazer
+          melhores escolhas.
+        </p>
+      </div>
+
+      <div class="table-box entrada-fade delay-5">
+        <table>
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Nome</th>
+              <th>Calorias</th>
+              <th>Proteínas</th>
+              <th>Carboidratos</th>
+              <th>Fibras</th>
+              <th>Lipídios</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for alimento in alimentos [1:] %}
+            <tr>
+              <td>{{alimento.categoria}}</td>
+              <td>{{alimento.nome}} {{alimento.tags}}</td>
+              <td>{{alimento.cal}}</td>
+              <td>{{alimento.prot}}</td>
+              <td>{{alimento.carb}}</td>
+              <td>{{alimento.fib}}</td>
+              <td>{{alimento.lip}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p class="disclaimer">Esta é uma versão adaptada da Tabela Brasileira de Composição de Alimentos (TACO). Para a versão na íntegra, acesse portal do <a href="https://nepa.unicamp.br/publicacoes/" target="_blank">NEPA</a>.</p>
+    </section>
+  </main>
+</body>
+{%endblock%}

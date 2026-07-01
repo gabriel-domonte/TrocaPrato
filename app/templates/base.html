@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    
+    {% block links %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
+
+    <script src="{{ url_for('static', filename='js/menu.js') }}" defer></script>
+    {% block script %}{% endblock %}
+    
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='/img/logotp.png') }}" alt="logo" width="280" height="200">
+        </div>
+            <button class="botao-burguer" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul id="nav-menu">
+                <li><a href="{{ url_for('comparador') }}">Conversor</a></li>
+                <li class="menu-divisor">|</li>
+                <li><a href="{{ url_for('favoritos.exibir_favoritos') }}">Favoritos</a></li>            
+                <li class="menu-divisor">|</li>
+                <li><a href="{{ url_for('tabela.exibir_tabela') }}">Tabela</a></li>
+                <li class="menu-divisor">|</li>
+                <li><a href="{{ url_for('perfil') }}">Perfil</a></li>
+            </ul>
+    </header>
+
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+
+        
+
+        <div class="footer-container">
+
+            <div class="footer-info">
+
+                <h2>Troca Prato</h2>
+
+                <p>
+                    O jeito mais simples de variar sua alimentação.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Integrantes</h3>
+
+                <p>Ana Laura E.</p>
+                <p>Anna Júlia F.</p>
+                <p>Daniele M.</p>
+                <p>Gabriel do Monte</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Projeto</h3>
+
+                <a href="https://github.com/gabriel-domonte/TrocaPrato/tree/main" target="_blank">GitHub</a>
+                <a href="https://github.com/gabriel-domonte/TrocaPrato/tree/main">Documentação</a>
+                <a href="#">Contato</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Troca Prato • Projeto Acadêmico
+        </div>
+
+    </footer>
+
+</body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert("{{ messages[0] }}")
+        </script>
+    {% endif %}
+{% endwith %}
+</html>

@@ -1,0 +1,296 @@
+/* importanto fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Segoe+UI:wght@400;600;700&display=swap');
+
+
+/*variáveis globais*/
+:root {
+    --verde-principal: #0a6f47;
+    --verde-texto: #053d27;
+    --verde-hover: #46783e;
+    --amarelo-card: #f7d05c;
+    --fundo-site: #fcf9f2;
+    --branco: #ffffff;
+    --cinza-claro: #fefff7;
+    --vermelho-erro: rgb(183, 12, 12);
+    --sombra-leve: 0px 2px 5px rgba(0,0,0,0.05);
+    --sombra-media: 0px 8px 20px rgba(0,0,0,0.08);
+    --transicao-padrao: 0.3s;
+}
+
+
+/* propriedades para todas as páginas */
+
+html, body {
+    min-height: 180vh; /* permite que o corpo estique apx. 2 telas da altura da tela */
+    background-color: var(--fundo-site);
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+main {
+    flex: 1; /*o conteúdo da main vai ocupar o restante do espaço da tela*/
+}
+
+.escondido {
+    display: none;
+}
+
+
+
+.navbar {
+    width: 100%;
+    background: var(--verde-principal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem; /*1 rem no topo e embaixo e 1.25 rem nos lados*/
+    position: relative;
+    z-index: 9999;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+.logo {
+    padding: 0;
+    margin-left: 0;
+}
+
+.logo img { 
+    height: 2.5rem;
+    width: auto;
+}
+
+
+
+/* menu burguer para mobile*/
+
+.botao-burguer {  /*para o container das barras*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.6rem;
+    height: 1.1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+    
+}
+
+.botao-burguer span { /*barras*/
+    width: 100%;
+    height: 3px;
+    background-color: var(--branco);
+    border-radius: 2px;
+    transition: var(--transicao-padrao);
+}
+
+
+/* animação para que as barras se transformem em um X*/
+
+.botao-burguer.aberto span:nth-child(1) { 
+    transform: translateY(10px) rotate(50deg); 
+}
+
+
+.botao-burguer.aberto span:nth-child(2) { 
+    opacity: 0; 
+} /*faz com que a barra do meio desapareça*/
+
+
+.botao-burguer.aberto span:nth-child(3) {
+     transform: translateY(-5px) rotate(-45deg); 
+}
+
+
+
+
+
+.navbar ul { 
+    position: fixed;  /*não se move caso a tela abaixo do menu seja rolada !*/
+    top: 0;
+
+    /*isso serve para quando a lista não estiver ativa não aparecer na tela: */
+    right: -100%; 
+
+    width: 70%; /*largura*/
+
+    height: 100vh;
+    background-color: rgba(7, 81, 25, 0.952);
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 6.5rem;
+    padding-left: 2.5rem;
+    gap: 1.2rem; 
+    list-style: none;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -5px 0px 15px rgba(0,0,0,0.15);
+}
+
+.navbar ul.ativo {
+    right: 0; /*quando a navbar ganhar a classe ativo ela irá aparecer*/
+}
+
+.menu-divisor {
+    display: none; /* esconde as barras verticais no celular */
+}
+
+.navbar a { 
+    text-decoration: none; 
+    color: var(--branco); 
+    width: 100%;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: var(--transicao-padrao);
+}
+
+.navbar a:hover { 
+    color: #69d983; 
+}
+
+
+.footer {
+    margin-top: 6rem;
+    color: var(--branco);
+}
+
+.footer-container {
+    background: linear-gradient(135deg, #2e8b57, #1f6b42);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2.5rem 5%;
+    text-align: center;
+}
+
+.footer-info {
+    max-width: 100%;
+}
+
+.footer-info h2 {
+    color: var(--branco);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.footer-info p {
+    opacity: .9;
+    line-height: 1.6;
+}
+
+.footer-col h3 {
+    margin-bottom: 0.9rem;
+    font-weight: 600;
+}
+
+.footer-col p, .footer-col a {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--branco);
+    text-decoration: none;
+    opacity: .9;
+    transition: transform var(--transicao-padrao);
+}
+
+.footer-col a:hover {
+    transform: translateX(5px);
+    opacity: 1;
+}
+
+.footer-bottom {
+    background: #175535;
+    text-align: center;
+    padding: 0.9rem;
+    font-size: 0.9rem;
+}
+
+/* adaptação para computadores */
+
+@media (min-width: 48rem) { /*apx 770px*/
+
+
+    /* zerando o estilo da nav bar para design desktop*/
+    .navbar {
+        height: 5rem; /*80px*/
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .logo {
+        padding: 0;
+        margin-left: 1.25rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img { 
+        height: 3.1rem;
+        width: auto; 
+    }
+
+    .botao-burguer {
+        display: none; /* escondendo botão de menuburguer*/
+    }
+
+    
+    .navbar ul { 
+        position: static; /* tira o comportamento fixo do menu */
+        width: auto;
+        height: auto;
+        background: transparent;
+        backdrop-filter: none;
+        box-shadow: none;
+        
+        display: flex; 
+        flex-direction: row; /* links um ao lado do outro */
+        align-items: center;
+        gap: 1.25rem; 
+        padding: 0;
+    }
+
+    .menu-divisor {
+        display: inline-block; /* retorna as barras de divisão dos links*/
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    
+    .navbar ul li {
+        width: auto;
+        padding-right: 0;
+    }
+
+    .navbar a { 
+        font-weight: 500; 
+        font-size: 1rem;
+    }
+
+    /* restauração exata do footer */
+    .footer {
+        margin-top: 15rem;
+    }
+
+    .footer-container {
+        flex-direction: row; /*um ao lado do outro*/
+        justify-content: space-around;
+        gap: 3.75rem;
+        padding: 3rem 10%;
+        text-align: left;
+    }
+
+    .footer-info {
+        max-width: 20rem;
+    }
+}
+
+

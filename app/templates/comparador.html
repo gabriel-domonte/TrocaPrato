@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Página Inicial{% endblock %}
+{% block title %}Página Inicial - TrocaPrato{% endblock %}
 
 {% block links %}
 <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/comparador.css')}}">
 {% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js" defer></script>
+<script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+{% endblock %}
+
+
 
 {% block content %}
 <div class="container-conversor">
@@ -16,7 +24,7 @@
     <div class="layout-conversor-grid ">
         
         <div class="coluna-esquerda-form">
-            <form method="POST" action="/resultado" id="comparador" novalidate>
+            <form method="POST" action="/comparador/resultado" id="comparador" novalidate>
                 
                 <div class="caixa-passo entrada-fade delay-3" id="div-alimento-a">
                     <div class="numero-etapa ">1</div> 
@@ -25,20 +33,20 @@
                         <div class="dados-caixa entrada-fade delay-4  ">
                             <div class="selects-container">
                                 <select id="filtro-a">
-                                    <option value="todas">todas as categorias</option>
-                                    <option value="cereais e derivados">cereais e derivados</option>
-                                    <option value="verduras e hortaliças">verduras e hortaliças</option>
-                                    <option value="frutas">frutas</option>
-                                    <option value="gorduras">gorduras</option>
-                                    <option value="pescados e frutos do mar">pescados e frutos do mar</option>
-                                    <option value="carnes e derivados">carnes e derivados</option>
-                                    <option value="leite e derivados">leite e derivados</option>
-                                    <option value="bebidas">bebidas</option>
-                                    <option value="ovos e derivados">ovos e derivados</option>
-                                    <option value="alimentos doces">alimentos doces</option>
-                                    <option value="outros alimentos">outros alimentos</option>
-                                    <option value="leguminosas">leguminosas</option>
-                                    <option value="nozes e sementes">nozes e sementes</option>
+                                    <option value="todas">Todas as categorias</option>
+                                    <option value="cereais e derivados">Cereais e derivados</option>
+                                    <option value="verduras e hortaliças">Verduras e hortaliças</option>
+                                    <option value="frutas">Frutas</option>
+                                    <option value="gorduras">Gorduras</option>
+                                    <option value="pescados e frutos do mar">Pescados e frutos do mar</option>
+                                    <option value="carnes e derivados">Carnes e derivados</option>
+                                    <option value="leite e derivados">Leite e derivados</option>
+                                    <option value="bebidas">Bebidas</option>
+                                    <option value="ovos e derivados">Ovos e derivados</option>
+                                    <option value="alimentos doces">Alimentos doces</option>
+                                    <option value="outros alimentos">Outros alimentos</option>
+                                    <option value="leguminosas">Leguminosas</option>
+                                    <option value="nozes e sementes">Nozes e sementes</option>
                                 </select>
                                 <select name="alimento-a" id="select-alimento-a" class="select-alim-a" required></select>
                                 <p class="escondido animar-erro delay-1" id="msg-erro-1">Informe um alimento.</p>
@@ -57,9 +65,9 @@
                     <div class="conteudo-passo">
                         <h2>Quantas gramas desse alimento você deveria consumir?</h2>
                         <div class="dados-caixa entrada-fade delay-2"> 
-                            <div class="input-peso-conteiner">
+                            <div class="input-peso-container">
                                 <div class="input-peso-solo">
-                                    <input type="number" name="peso_a" id="peso-a" min="1" max="999" required placeholder="Ex.: 100">
+                                    <input type="number" name="peso-a" id="peso-a" min="1" max="999" required placeholder="Ex.: 100">
                                     <span>g</span>
                                 </div>
                                 <p class="escondido animar-erro delay-1" id="msg-erro-2">Informe o peso.</p>
@@ -78,23 +86,23 @@
                         <div class="dados-caixa entrada-fade delay-2">
                             <div class="selects-container">
                                 <select id="filtro-b">
-                                    <option value="todas">todas as categorias</option>
-                                    <option value="cereais e derivados">cereais e derivados</option>
-                                    <option value="verduras e hortaliças">verduras e hortaliças</option>
-                                    <option value="frutas">frutas</option>
-                                    <option value="gorduras">gorduras</option>
-                                    <option value="pescados e frutos do mar">pescados e frutos do mar</option>
-                                    <option value="carnes e derivados">carnes e derivados</option>
-                                    <option value="leite e derivados">leite e derivados</option>
-                                    <option value="bebidas">bebidas</option>
-                                    <option value="ovos e derivados">ovos e derivados</option>
-                                    <option value="alimentos doces">alimentos doces</option>
-                                    <option value="outros alimentos">outros alimentos</option>
-                                    <option value="leguminosas">leguminosas</option>
-                                    <option value="nozes e sementes">nozes e sementes</option>
+                                    <option value="todas">Todas as categorias</option>
+                                    <option value="cereais e derivados">Cereais e derivados</option>
+                                    <option value="verduras e hortaliças">Verduras e hortaliças</option>
+                                    <option value="frutas">Frutas</option>
+                                    <option value="gorduras">Gorduras</option>
+                                    <option value="pescados e frutos do mar">Pescados e frutos do mar</option>
+                                    <option value="carnes e derivados">Carnes e derivados</option>
+                                    <option value="leite e derivados">Leite e derivados</option>
+                                    <option value="bebidas">Bebidas</option>
+                                    <option value="ovos e derivados">Ovos e derivados</option>
+                                    <option value="alimentos doces">Alimentos doces</option>
+                                    <option value="outros alimentos">Outros alimentos</option>
+                                    <option value="leguminosas">Leguminosas</option>
+                                    <option value="nozes e sementes">Nozes e sementes</option>
                                 </select>
                                 <select name="alimento-b" id="select-alimento-b" required></select>
-                                <p class="escondido animar-erro delay-1" id="msg-erro-3">Informe o alimento.</p>
+                                <p class="escondido animar-erro" id="msg-erro-3">Informe o alimento.</p>
                             </div>
                         </div>
                     </div>
@@ -137,8 +145,5 @@
     </div>
 </div>
 
-{% block script %}
-<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js" defer></script>
-<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
-{% endblock %}
+
 {% endblock %}
