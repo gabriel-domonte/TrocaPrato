@@ -1,9 +1,15 @@
 @keyframes fadeInSuave {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(20px); /*de cima p/ baixo*/
     }
     to {
+        /*NOTA: quando usamos o keyframes, adicionamos nesse campo as propiedades FINAIS do elemento.
+        caso tenha usado uma propriedade no inicio da animação (from) e não tenha atualizado (no to), o CSS
+        entende que você quer que o elemento volte a propriedade original dele*/
+
+        /*ENTRETANTO: é padrão atualizar as propiedades no to para manter a clareza no codigo*/
+
         opacity: 1;
         transform: translateY(0);
     }
@@ -11,23 +17,26 @@
 
 .entrada-fade {
     animation: fadeInSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    /* o cubic-bezier é a curva de velocidade da animação, começa devagar - acelera - termina suave*/
+
+    /*o both é uma propiedade de 'animation-fill-mode'
+     para manter o estado inicial e final da animação*/
 }
 
-/* Delays (atrasos) para criar o efeito cascata (um elemento surge após o outro) */
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.8s; }
-.delay-4{ animation-delay: 1s;}
-.delay-5{ animation-delay: 1.3s;}
-.delay-6{ animation-delay: 1.6s;}
-.delay-7{ animation-delay: 1.9s;}
-.delay-max{ animation-delay: 3s ;}
 
+
+/*ANIMAÇÕES PARA IMAGEM INICIAL*/
 
 @keyframes flutuar {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    0% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-20px); 
+    } /*20 px ACIMA*/
+    100% { 
+        transform: translateY(0px); 
+    }
 }
 
 .animar-flutuar {
@@ -35,10 +44,17 @@
 }
 
 
+
+
 @keyframes flutuar2 {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(10px); }
-    100% { transform: translateY(0px); }
+    0% { 
+        transform: translateY(0px); }
+    50% { 
+        transform: translateY(10px);/*10 px ABAIXO*/ 
+    }
+    100% { 
+        transform: translateY(0px); 
+    }
 }
 
 .animar-flutuar2{
@@ -50,6 +66,7 @@
 @keyframes lupa-girar{
     0%{
         transform: rotate(-20deg);
+        /*20 graus no sentido anti-horario*/
     }
 
     50%{
@@ -63,13 +80,22 @@
 
 
 .animar-contornar{
-    animation: lupa-girar 4s linear infinite;
+    animation: lupa-girar 4s ease-in-out infinite;
 }
 
+
+/*ANIMAÇÃO PARA TEXTO DE ERRO*/
+
 @keyframes tremerErro {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-6px); }
-    40%, 80% { transform: translateX(6px); }
+    0%, 100% { 
+        transform: translateX(0); 
+    }
+    20%, 60% { 
+        transform: translateX(-6px); 
+    } /*para esquerda*/
+    40%, 80% { 
+        transform: translateX(6px); 
+    } /*para direita*/
 }
 
 .animar-erro {
@@ -79,9 +105,15 @@
 
 
 @keyframes popIn {
-    0% { transform: scale(0.7); opacity: 0; }
-    80% { transform: scale(1.05); }
-    100% { transform: scale(1); opacity: 1; }
+    0% { 
+        transform: scale(0.7); opacity: 0; 
+    }
+    80% { 
+        transform: scale(1.05); 
+    }
+    100% { 
+        transform: scale(1); opacity: 1;
+     }
 }
 
 .animar-pop {
@@ -90,9 +122,10 @@
 }
 
 
+
 @keyframes anima-texto1 {
   0% {
-    letter-spacing: -0.5em;
+    letter-spacing: -0.5em; /*espaçamento apertado*/
     opacity: 0;
   }
   40% {
@@ -109,37 +142,15 @@
 }
 
 
-@keyframes focar-e-juntar-txt {
-  0% {
-    letter-spacing: 1em;
-    transform: translateZ(300px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateZ(12px);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
-.anima-texto2{
-    animation: focar-e-juntar-txt 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-};
 
 
 
-/* essa entrada é para o efeito de scrollar a tela e aparecer os elementos */
-@keyframes entrada-Scroll{
-    from{
-        opacity: 0;
-        scale: 0.5;
-    }
-}
-
-
-.entrada-scroll{
-     animation: entrada-Scroll;
-    animation-timeline: view();  /*quando o container for visto a animação vai acontecer*/
-    animation-range: entry 0% cover 50%; /*divisao da animação, finaliza quando estiver na metade da*/
-}
+/* Delays (atrasos) para criar o efeito cascata (um elemento surge após o outro) */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.8s; }
+.delay-4{ animation-delay: 1s;}
+.delay-5{ animation-delay: 1.3s;}
+.delay-6{ animation-delay: 1.6s;}
+.delay-7{ animation-delay: 1.9s;}
+.delay-max{ animation-delay: 3s ;}
