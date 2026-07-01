@@ -143,11 +143,14 @@ form::before { /*linha que fica antes do formulário*/
 }
 
 
-/*dropdown que precisa ficar acima dos 
-elementos quando for ativado*/
+
 .ts-wrapper { 
+    /*ts-wrapper é uma classe que envolve todos os
+    elementos de um tomSelect*/
     position: relative; 
     z-index: 1000; 
+    /*garante que o dropdown fique acima dos 
+    elementos quando for ativado*/
 }
 
 
