@@ -27,11 +27,13 @@
                     id="usuario"
                     name="usuario"
                     placeholder="Digite seu nome de usuário"
-                    value="{{ request.form.get('usuario', '') }}"
+                    value="{{ request.form.get('usuario', '') }}" 
+
                 >
 
                 {% if erros.usuario %}
-                    <p class="erro animar-erro" id="msg-erro">{{ erros.usuario }}</p>
+                    <p class="erro animar-erro" id="msg-erro">{{ erros.usuario }}</p> 
+                    <!--erros é um dicionário com chaves que retornam mensagens via flask-->
                 {% endif %}
             </div>
 
