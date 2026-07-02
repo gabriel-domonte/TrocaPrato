@@ -39,30 +39,6 @@
 }
 
 
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 1.25rem;
-    position: relative;
-    padding-left: 45px; /* recuo menor nativo para mobile */
-}
-
-/* escondido por padrão no mobile */
-form::before { /*linha que fica antes do formulário*/
-    display: none;
-    content: "";
-    position: absolute;
-    left: 21px; 
-    top: 35px;
-    bottom: 120px;
-    width: 2px;
-    border-left: 2px dashed var(--verde-principal);
-    z-index: 0;
-    animation: fadeInSuave 0.6s both;
-    animation-delay: 2s;
-}
-
 .caixa-passo {
     width: 100%;
     background-color: var(--amarelo-card);
@@ -70,6 +46,8 @@ form::before { /*linha que fica antes do formulário*/
     padding: 1.5rem;
     box-shadow: var(--sombra-media);
     position: relative; 
+    /*os elementos que tiverem dentro do caixa passo
+    vão se mover tendo ela como referencia*/
     transition: transform var(--transicao-padrao);
 }
 
@@ -90,6 +68,34 @@ form::before { /*linha que fica antes do formulário*/
     margin-bottom: 0.9rem;
     line-height: 1.4;
 }
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.25rem;
+    position: relative;
+    padding-left: 45px; /* recuo menor nativo para mobile */
+}
+
+
+/* escondido por padrão no mobile */
+/*pseudo elemento para decoração do site*/
+form::before { /*linha que fica antes do formulário*/
+    display: none;
+    content: ""; /*necessario para que o elemento passe a existir*/
+    position: absolute;
+    left: 21px; 
+    top: 35px;
+    bottom: 120px;
+    width: 2px;
+    border-left: 2px dashed var(--verde-principal);
+    z-index: 0;
+    animation: fadeInSuave 0.6s both;
+    animation-delay: 2s;
+}
+
 
 .numero-etapa {
     position: absolute;
@@ -136,9 +142,15 @@ form::before { /*linha que fica antes do formulário*/
     outline: none;
 }
 
-.ts-wrapper { /*dropdown que precisa ficar acima dos elementos quando for ativado*/
+
+
+.ts-wrapper { 
+    /*ts-wrapper é uma classe que envolve todos os
+    elementos de um tomSelect*/
     position: relative; 
     z-index: 1000; 
+    /*garante que o dropdown fique acima dos 
+    elementos quando for ativado*/
 }
 
 
@@ -146,12 +158,9 @@ form::before { /*linha que fica antes do formulário*/
     z-index: 10; 
 }
 
-#div-peso { 
-    z-index: 1; 
-}
 
 #div-alimento-b { 
-    z-index: 1; 
+    z-index: 10; 
 }
 
 .ts-control { 
@@ -201,7 +210,7 @@ form::before { /*linha que fica antes do formulário*/
     align-items: center;
     transition: var(--transicao-padrao);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 5px auto 0 auto; /* Centralizado no mobile */
+    margin: 5px auto 0 auto; /* centralizado no mobile */
 }
 
 .proximo:hover {
@@ -363,6 +372,6 @@ form::before { /*linha que fica antes do formulário*/
     }
 
     .coluna-lateral-infos {
-        display: flex; /* aside aparece elegantemente na direita */
+        display: flex; /* aside aparece na direita */
     }
 }

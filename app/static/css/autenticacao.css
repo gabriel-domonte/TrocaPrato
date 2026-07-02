@@ -22,7 +22,7 @@
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100vh; /*100% do tamanho da tela do dispositivo*/
     background: linear-gradient(135deg, #2e8b57, #165118);
     position: relative;
     display: flex;
