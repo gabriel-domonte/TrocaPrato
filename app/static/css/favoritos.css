@@ -169,28 +169,57 @@
 }
 
 
+.dica-header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.dica-header h4 { color: var(--verde-texto); font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.dica-header p { font-size: 0.88rem; color: #555; }
 
+
+.passo-ajuda {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.icone-ajuda { font-size: 1.3rem; }
+.passo-ajuda p { font-size: 0.9rem; color: #444; line-height: 1.4; }
 
 @media (max-width: 768px) {
-    /* Ajuste dos Favoritos */
-    .card-favorito {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 20px;
-    }
-    .info-fav {
-        flex-direction: column;
-        gap: 10px;
-    }
+  .favoritos-page {
+    width: min(92%, 1400px);
+    margin: 25px auto;
+    flex-direction: column;
+    gap: 25px;
+  }
 
-    /* Ajuste do bloco comparacao de nutrientes nos favoritos */
-    .comparacao-nutrientes {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .seta-equivalencia {
-        transform: rotate(90deg);
-        margin: 5px 0;
-    }
+  .favoritos-content,
+  .side-tabela {
+    width: 100%;
+    flex: none;
+  }
+
+  .favoritos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorito-card {
+    padding: 20px;
+  }
+
+  .comparacao-fav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .seta {
+    transform: rotate(90deg);
+  }
+
+  .form-remover {
+    top: 12px;
+    right: 12px;
+  }
 }
