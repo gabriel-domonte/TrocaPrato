@@ -264,7 +264,7 @@ body {
 .integrante img {
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    object-fit: cover; /*permite com que a imagem nn achate e siga a altura e largura definida*/
     border-radius: 12px;
 }
 
