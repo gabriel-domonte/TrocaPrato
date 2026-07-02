@@ -74,7 +74,7 @@
             <div class="barra-bg">
               <div
                 class="barra-progresso barra-vermelha"
-                style="width: 45%"
+                style="width: {{ (dict_alimento_b.carb * 100 / dict_alimento_a.carb) if dict_alimento_a.carb else 0 }}%"
               ></div>
             </div>
             {% elif dict_alimento_a.carb == dict_alimento_b.carb %}
@@ -86,7 +86,10 @@
               + {{dict_alimento_b.carb - dict_alimento_a.carb}}g de carboidratos
             </div>
             <div class="barra-bg">
-              <div class="barra-progresso barra-verde" style="width: 75%"></div>
+              <div 
+              class="barra-progresso barra-verde" 
+              style="width: {{ ((dict_alimento_b.carb - dict_alimento_a.carb) *100 / dict_alimento_b.carb ) if dict_alimento_b.carb else 0 }}%"
+              ></div>
             </div>
             {% endif %}
           </div>
@@ -100,7 +103,7 @@
             <div class="barra-bg">
               <div
                 class="barra-progresso barra-vermelha"
-                style="width: 30%"
+                style="width: {{ (dict_alimento_b.prot * 100 / dict_alimento_a.prot) if dict_alimento_a.prot else 0 }}%"
               ></div>
             </div>
             {% elif dict_alimento_a.prot == dict_alimento_b.prot %}
@@ -112,7 +115,10 @@
               + {{dict_alimento_b.prot - dict_alimento_a.prot}}g de proteínas
             </div>
             <div class="barra-bg">
-              <div class="barra-progresso barra-verde" style="width: 60%"></div>
+              <div 
+              class="barra-progresso barra-verde" 
+              style="width: {{ ((dict_alimento_b.prot - dict_alimento_a.prot) *100 / dict_alimento_b.prot ) if dict_alimento_b.prot else 0 }}%"
+              ></div>
             </div>
             {% endif %}
           </div>
@@ -125,7 +131,7 @@
             <div class="barra-bg">
               <div
                 class="barra-progresso barra-vermelha"
-                style="width: 40%"
+                style="width: {{ (dict_alimento_b.lip * 100 / dict_alimento_a.lip) if dict_alimento_a.lip else 0 }}%"
               ></div>
             </div>
             {% elif dict_alimento_a.lip == dict_alimento_b.lip %}
@@ -137,7 +143,10 @@
               + {{ (dict_alimento_b.lip - dict_alimento_a.lip)|abs }}g de lipídeos
             </div>
             <div class="barra-bg">
-              <div class="barra-progresso barra-verde" style="width: 85%"></div>
+              <div 
+              class="barra-progresso barra-verde" 
+              style="width: {{ ((dict_alimento_b.lip - dict_alimento_a.lip) *100 / dict_alimento_b.lip ) if dict_alimento_b.lip else 0 }}%"
+              ></div>
             </div>
             {% endif %}
           </div>
@@ -150,7 +159,7 @@
             <div class="barra-bg">
               <div
                 class="barra-progresso barra-vermelha"
-                style="width: 25%"
+                style="width: {{ (dict_alimento_b.fib * 100 / dict_alimento_a.fib) if dict_alimento_a.fib else 0 }}%"
               ></div>
             </div>
             {% elif dict_alimento_a.fib == dict_alimento_b.fib %}
@@ -162,7 +171,10 @@
               + {{ (dict_alimento_b.fib - dict_alimento_a.fib)|abs }}g de fibras
             </div>
             <div class="barra-bg">
-              <div class="barra-progresso barra-verde" style="width: 50%"></div>
+              <div 
+              class="barra-progresso barra-verde" 
+              style="width: {{ ((dict_alimento_b.fib - dict_alimento_a.fib) *100 / dict_alimento_b.fib ) if dict_alimento_b.fib else 0 }}%"
+              ></div>
             </div>
             {% endif %}
           </div>
