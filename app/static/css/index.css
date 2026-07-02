@@ -25,6 +25,15 @@ body {
     background: #f9f8f6;
 }
 
+/*animação especial da página inicial*/
+
+@keyframes entrada-scroll {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+}
+
 
 .climate-crisis {
     font-family: "Climate Crisis", sans-serif;
@@ -37,14 +46,11 @@ body {
 }
 
 
-/*animação especial da página inicial*/
 
-@keyframes entrada-scroll {
-    from {
-        opacity: 0;
-        scale: 0.5;
-    }
-}
+
+
+
+
 
 .nav-bar-i {
     display: flex;
@@ -258,7 +264,7 @@ body {
 .integrante img {
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    object-fit: cover; /*permite com que a imagem nn achate e siga a altura e largura definida*/
     border-radius: 12px;
 }
 
@@ -287,7 +293,8 @@ body {
 @media (min-width: 992px) {
     .dados-inicio {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 20px;
         padding: 0;
         background-color: var(--fundo-site);
         animation-delay: 4s;
@@ -320,42 +327,40 @@ body {
 
     /* imagem lateral que no mobile está escondida */
     .imagem-lat {
-        display: block;
-        position: relative; /*irá servir como ponto de partida para as locomoções das
-                            imagens filhas que estão absolutas*/
-        width: 900px;
-        height: 780px;
+            display: block;
+            position: relative;
+            width: 780px;
+            height: 720px;
     }
 
     .fundo {
-        position: absolute; /*podem flutuar no site tendo como 
-                            partida as coordenadas da imagem-lat*/
-
-        top: -5px; /*distância do topo*/
-        width: 100%;
-        height: 100%;
-        animation: fadeInSuave 1s cubic-bezier(0.16, 1, 0.3, 1) both, flutuar 2s ease-in-out infinite;
-        animation-delay: 0.5s;
-        z-index: 1;
+        position: absolute;
+        width: 110%;
+        left: -10%;
+        top: -20%;
+        animation: fadeInSuave 1s cubic-bezier(0.16,1,0.3,1) both,
+            flutuar 2s ease-in-out infinite;
+        animation-delay: .5s;
+        z-index:1;
     }
 
     .tigela {
-        position: absolute;
-        width: 380px;
-        top: 170px; 
-        left: 180px;
-        z-index: 2;
+        position:absolute;
+         width:54%;
+         left:15%;
+         top:20%;
+         z-index:2;
         animation: fadeInSuave 1s both, flutuar2 3s infinite;
         animation-delay: 1s;
         filter: drop-shadow(10px 15px 3px rgba(0, 0, 0, 0.2)); /*filtro para colocar sombra em imagem*/
     }
 
     .lupa {
-        position: absolute;
-        width: 180px;
-        top: 300px;
-        left: 440px;
-        z-index: 3;
+        position:absolute;
+        width:25%;
+        left:55%;
+        top:40%;
+        z-index:3;
         animation: popIn 1s both, lupa-girar 3s infinite;
         animation-delay: 1.1s;
         filter: drop-shadow(10px 15px 3px rgba(0, 0, 0, 0.2));

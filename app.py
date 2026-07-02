@@ -6,8 +6,18 @@ from app.controller.autenticacao import autenticacao_bp
 from app.controller.favoritos import favoritos_bp
 from app.controller.tabela import tabela_bp
 
-load_dotenv()
+# ESSA PARTE FOI ALTERADA PARA RODAR O CÓDIGO
 
+#facilita pro git encontrar o arquivo .env
+ 
+# a base_dir vai guardar dinamicamente o caminho absoluto(path.abspath)
+# assim vai funcionar para qualquer sistema operacional 
+
+base_dir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(base_dir, '.env'))
+
+
+######################################
 app = Flask(__name__,
             template_folder='app/templates',
             static_folder='app/static')

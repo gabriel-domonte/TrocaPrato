@@ -93,18 +93,20 @@ main {
 
 
 /* animação para que as barras se transformem em um X*/
+/*os spans passam a ser um grupo que pode ser acessado pelo indices*/
 
-.botao-burguer.aberto span:nth-child(1) { 
+.botao-burguer.ativo span:nth-child(1) { 
     transform: translateY(10px) rotate(50deg); 
+    /* 50 graus no sentido horário */
 }
 
 
-.botao-burguer.aberto span:nth-child(2) { 
+.botao-burguer.ativo span:nth-child(2) { 
     opacity: 0; 
 } /*faz com que a barra do meio desapareça*/
 
 
-.botao-burguer.aberto span:nth-child(3) {
+.botao-burguer.ativo span:nth-child(3) {
      transform: translateY(-5px) rotate(-45deg); 
 }
 
@@ -119,7 +121,7 @@ main {
     /*isso serve para quando a lista não estiver ativa não aparecer na tela: */
     right: -100%; 
 
-    width: 70%; /*largura*/
+    width: 70%; /*largura de 70% da tela*/
 
     height: 100vh;
     background-color: rgba(7, 81, 25, 0.952);
@@ -135,7 +137,7 @@ main {
     box-shadow: -5px 0px 15px rgba(0,0,0,0.15);
 }
 
-.navbar ul.ativo {
+.navbar ul.aberto {
     right: 0; /*quando a navbar ganhar a classe ativo ela irá aparecer*/
 }
 
@@ -205,7 +207,7 @@ main {
     opacity: 1;
 }
 
-.footer-bottom {
+.barra-footer {
     background: #175535;
     text-align: center;
     padding: 0.9rem;
@@ -292,5 +294,3 @@ main {
         max-width: 20rem;
     }
 }
-
-
