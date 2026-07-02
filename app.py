@@ -1,12 +1,12 @@
 from flask import Flask, render_template, send_file, session, redirect
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import os
 from app.controller.comparador import comparador_bp
 from app.controller.autenticacao import autenticacao_bp
 from app.controller.favoritos import favoritos_bp
 from app.controller.tabela import tabela_bp
 
-load_dotenv()
+load_dotenv(find_dotenv())
 
 app = Flask(__name__,
             template_folder='app/templates',
