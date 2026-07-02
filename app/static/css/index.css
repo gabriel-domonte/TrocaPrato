@@ -25,6 +25,15 @@ body {
     background: #f9f8f6;
 }
 
+/*animação especial da página inicial*/
+
+@keyframes entrada-scroll {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+}
+
 
 .climate-crisis {
     font-family: "Climate Crisis", sans-serif;
@@ -37,14 +46,11 @@ body {
 }
 
 
-/*animação especial da página inicial*/
 
-@keyframes entrada-scroll {
-    from {
-        opacity: 0;
-        scale: 0.5;
-    }
-}
+
+
+
+
 
 .nav-bar-i {
     display: flex;
@@ -258,7 +264,7 @@ body {
 .integrante img {
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    object-fit: cover; /*permite com que a imagem nn achate e siga a altura e largura definida*/
     border-radius: 12px;
 }
 
